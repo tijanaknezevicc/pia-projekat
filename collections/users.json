@@ -1,0 +1,28 @@
+[
+    {
+        "username": "pera",
+        "password": "pera123",
+        "type": "owner",
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "pera@gmail.com",
+        "gender": "M",
+        "address": "bulevar Pere Perica 16",
+        "phone": "066666666",
+        "payment": "5100 0000 0000 0000",
+        "pfp": "pera.png"
+    },
+    {
+        "username": "jana",
+        "password": "jana123",
+        "type": "tourist",
+        "firstName": "Jana",
+        "lastName": "Janicic",
+        "email": "jana@gmail.com",
+        "gender": "F",
+        "address": "bulevar OM",
+        "phone": "066666667",
+        "payment": "5200 0000 0000 0000",
+        "pfp": "jana.png"
+    }
+    ]

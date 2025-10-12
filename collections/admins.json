@@ -1,0 +1,11 @@
+[
+    {
+        "username": "admin",
+        "password": "admin",
+        "type": "admin",
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "email": "admin@admin.com",
+        "pfp": "admin.png"
+    }
+]
