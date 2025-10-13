@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="text-center pt-5 row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 form-signin">
+    <img class="mb-4" src="assets/ferg.gif" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">ulogujte se</h1>
+
+    <label for="inputEmail" class="sr-only">korisnicko ime</label>
+    <input type="text" class="form-control" placeholder="korisnicko ime" [(ngModel)]="username" required="" autofocus="">
+
+    <label for="inputPassword" class="sr-only">lozinka</label>
+    <input type="password" class="form-control mb-3" placeholder="lozinka" [(ngModel)]="password" required="">
+
+    <button class="btn btn-md btn-primary btn-block" (click)="login()">prijavi se</button>
+    <br>
+    <span style="color: red">{{message}}</span>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+

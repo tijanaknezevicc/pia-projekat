@@ -1,12 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { User } from '../../models/user';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, NgIf],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
+  private userService = inject(UserService)
+  private router = inject(Router)
+
+  user: User = new User()
+  message = ""
+  cardType: string | null = null
+
+  register() {
+    this.userService.register(this.user).subscribe(data => {
+      this.message = data
+      alert("vas nalog ceka na odobrenje administratora")
+      this.router.navigate([""])
+    })
+  }
+
+  onFileSelect(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+
+
+  formatCardNumber(event: any) {
+    let input = event.target.value.replace(/\D/g, '');
+    input = input.replace(/(.{4})/g, '$1 ').trim();
+    event.target.value = input;
+    this.user.payment = input;
+    this.detectCardType(input.replace(/\s/g, ''));
+  }
+
+  detectCardType(value: string) {
+    if (/^4/.test(value)) {
+      this.cardType = 'assets/cards/visa.png'
+    } else if (/^5[1-5]/.test(value)) {
+      this.cardType = 'assets/cards/mastercard.png'
+    } else if (/^(36|38|300|301|302|303)/.test(value)) {
+      this.cardType = 'assets/cards/diners.png';
+    } else {
+      this.cardType = null
+    }
+  }
 }

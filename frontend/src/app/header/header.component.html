@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: cadetblue;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Vikendice</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
@@ -8,30 +8,41 @@
 
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">opcija 1 <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">opcija 2</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="#">opcija 3</a>
         </li>
 
         <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle>Dropdown</a>
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle>jos neke opcije</a>
           <div ngbDropdownMenu>
-            <a ngbDropdownItem href="#">Action</a>
-            <a ngbDropdownItem href="#">Another action</a>
-            <a ngbDropdownItem href="#">Something else</a>
+            <a ngbDropdownItem href="#">prva</a>
+            <a ngbDropdownItem href="#">druga</a>
+            <a ngbDropdownItem href="#">treca</a>
           </div>
         </li>
       </ul>
 
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <button class="btn btn-outline-danger" type="button">Logout</button>
+
+        <li class="nav-item" *ngIf="isLogged">
+          <button class="btn btn-outline-danger" (click)="logout()">odjavi se</button>
         </li>
+
+        <ng-container *ngIf="!isLogged">
+          <li class="nav-item">
+            <button class="btn btn-md btn-primary me-2" (click)="goTo('login')">prijavi se</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-md btn-success" (click)="goTo('register')">registruj se</button>
+          </li>
+          </ng-container>
+
       </ul>
     </div>
   </div>

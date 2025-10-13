@@ -1,1 +1,137 @@
-<p>register works!</p>
+<section>
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-11 col-xl-10">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">registracija</h4>
+            <form (ngSubmit)="register()" #registerForm="ngForm" enctype="multipart/form-data">
+
+              <div class="row">
+                <div class="col-md-4 mb-4">
+
+                  <div class="form-outline form-floating mb-3">
+                    <input type="text" id="username" name="username" placeholder="korisnicko ime" class="form-control form-control-lg" [(ngModel)]="user.username" required>
+                    <label class="form-label" for="username">korisnicko ime</label>
+                  </div>
+
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <input type="password" id="password" name="password" placeholder="lozinka" class="form-control form-control-lg"
+                    [(ngModel)]="user.password" required pattern="^[A-Za-z](?=.*[A-Z])(?=(?:.*[a-z]){3,})(?=.*[0-9])(?=.*[\W_]).{5,9}$"
+                    title="lozinka mora imati izmedju 6 i 10 karaktera, pocinjati slovom, sadrzati bar: jedno veliko slovo, tri mala slova, jedan broj i jedan specijalni karakter">
+                    <label class="form-label" for="password">lozinka</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="col-12">
+                    <div class="form-outline form-floating mb-3">
+                      <input type="email" id="email" name="email" placeholder="e-mail" class="form-control form-control-lg" [(ngModel)]="user.email" required>
+                      <label class="form-label" for="email">e-mail</label>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <input type="text" id="firstName" name="firstName" placeholder="ime" class="form-control form-control-lg" [(ngModel)]="user.firstName" required />
+                    <label class="form-label" for="firstName">ime</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <input type="text" id="lastName" name="lastName" placeholder="prezime" class="form-control form-control-lg" [(ngModel)]="user.lastName" required />
+                    <label class="form-label" for="lastName">prezime</label>
+                  </div>
+                </div>
+                  <div class="col-md-4 mb-4">
+                    <h6 class="mb-2 pb-1">pol:</h6>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="M" value="M"
+                        [(ngModel)]="user.gender" required />
+                      <label class="form-check-label" for="M">M</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="F" value="F"
+                        [(ngModel)]="user.gender" required />
+                      <label class="form-check-label" for="F">Z</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="other" value="other"
+                        [(ngModel)]="user.gender" required />
+                      <label class="form-check-label" for="other">drugo</label>
+                    </div>
+                  </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <input type="text" id="address" name="address" placeholder="adresa" class="form-control form-control-lg" [(ngModel)]="user.address" required>
+                    <label class="form-label" for="address">adresa</label>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <input type="tel" id="phone" name="phone" placeholder="kotakt telefon" class="form-control form-control-lg" [(ngModel)]="user.phone" required pattern="^\+?\d{8,15}$" title="kontakt telefon moze sadrzati znak + i 8–15 cifara" />
+                    <label class="form-label" for="phone">kontakt telefon</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <div class="form-outline form-floating mb-3">
+                    <select class="form-select form-control-lg" name="type" [(ngModel)]="user.type" required>
+                      <option value="" disabled>izaberi tip korisnika</option>
+                      <option value="owner">vlasnik</option>
+                      <option value="tourist">turista</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-8 mb-4">
+
+                  <label class="form-label" for="payment">Broj kreditne kartice</label>
+                  <div class="input-group">
+                    <input type="text" id="payment" name="payment" class="form-control form-control-lg" [(ngModel)]="user.payment"
+                      (input)="formatCardNumber($event)" maxlength="19"
+                    required
+                    title="Diners, MasterCard ili Visa"
+                    />
+                    <span class="input-group-text bg-white border-start-0">
+                      <img *ngIf="cardType" [src]="cardType" alt="card logo" style="height:24px;" />
+                    </span>
+                  </div>
+
+                </div>
+
+                <div class="col-md-4 mb-4">
+                  <label class="form-label" for="pfp">profilna slika</label>
+                  <input type="file" id="pfp" name="pfp" class="form-control form-control-lg" (change)="onFileSelect($event)" />
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="mt-4 pt-2">
+                    <button class="btn btn-primary btn-lg" type="submit">registruj se</button>
+                </div>
+
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

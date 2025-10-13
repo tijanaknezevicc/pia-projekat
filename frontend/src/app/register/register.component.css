@@ -1,0 +1,5 @@
+.form-select.form-control-lg {
+  height: calc(1.5em + 1rem + 2px);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}

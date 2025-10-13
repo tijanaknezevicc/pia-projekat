@@ -15,7 +15,8 @@ const userSchema = new mongoose_1.default.Schema({
     address: { type: String, required: true },
     phone: { type: String, required: true },
     payment: { type: String, required: true },
-    pfp: { type: String }
+    pfp: { type: String },
+    approved: { type: Boolean }
 }, {
     versionKey: false
 });
