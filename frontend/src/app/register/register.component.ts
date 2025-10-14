@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
+import { User } from '../models/user';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
@@ -35,11 +35,24 @@ export class RegisterComponent {
 
 
   formatCardNumber(event: any) {
-    let input = event.target.value.replace(/\D/g, '');
-    input = input.replace(/(.{4})/g, '$1 ').trim();
+    let input = event.target.value.replace(/\D/g, '')
+
+    if (/^(300|301|302|303|36|38)/.test(input)) {
+      input = input.substring(0, 15)
+      input = input.replace(/^(\d{4})(\d{0,7})(\d{0,4})/, '$1 $2 $3')
+      }
+
+    else {
+      input = input.replace(/(.{4})/g, '$1 ').trim()
+    }
+
     event.target.value = input;
     this.user.payment = input;
-    this.detectCardType(input.replace(/\s/g, ''));
+    this.detectCardType(input.replace(/\s/g, ''))
+
+    if (!this.cardType) {
+      this.user.payment = '';
+    }
   }
 
   detectCardType(value: string) {

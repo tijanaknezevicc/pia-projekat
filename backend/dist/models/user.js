@@ -16,7 +16,7 @@ const userSchema = new mongoose_1.default.Schema({
     phone: { type: String, required: true },
     payment: { type: String, required: true },
     pfp: { type: String },
-    approved: { type: Boolean }
+    active: { type: Boolean }
 }, {
     versionKey: false
 });

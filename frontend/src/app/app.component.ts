@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from "./login/login.component";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, HeaderComponent, FooterComponent, NgbModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NgbModule, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

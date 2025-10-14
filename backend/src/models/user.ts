@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     payment: { type: String, required: true },
     pfp: { type: String },
-    active: { type: Boolean}
+    active: { type: Boolean }
 }, {
     versionKey: false
 });

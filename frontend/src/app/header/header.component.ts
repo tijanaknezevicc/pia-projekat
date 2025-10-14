@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
-import { User } from '../../models/user';
+import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
 @Component({

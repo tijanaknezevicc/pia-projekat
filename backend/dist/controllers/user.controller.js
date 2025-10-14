@@ -19,7 +19,7 @@ class UserController {
         this.login = (req, res) => {
             let u = req.body.username;
             let p = req.body.password;
-            user_1.default.findOne({ username: u, password: p, approved: true }).then((user) => {
+            user_1.default.findOne({ username: u, password: p, active: true }).then((user) => {
                 res.json(user);
             }).catch((err) => {
                 console.log(err);
