@@ -6,6 +6,7 @@ import { OwnerComponent } from './owner/owner.component';
 import { TouristComponent } from './tourist/tourist.component';
 import { GuestComponent } from './guest/guest.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   {path: "", component: GuestComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
   {path: "admin", component: AdminComponent},
   {path: "owner", component: OwnerComponent},
   {path: "tourist", component: TouristComponent},
-  {path: "register", component: RegisterComponent}
+  {path: "register", component: RegisterComponent},
+  {path: "profile", component: ProfileComponent}
 ];

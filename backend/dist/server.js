@@ -7,9 +7,11 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const user_router_1 = __importDefault(require("./routers/user.router"));
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+app.use('/assets', express_1.default.static(path_1.default.join(__dirname, '../src/assets')));
 mongoose_1.default.connect('mongodb://localhost:27017/vikendice');
 const conn = mongoose_1.default.connection;
 conn.once('open', () => {

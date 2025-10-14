@@ -2,10 +2,12 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import userRouter from './routers/user.router'
+import path from 'path'
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use('/assets', express.static(path.join(__dirname, '../src/assets')))
 
 mongoose.connect('mongodb://localhost:27017/vikendice')
 const conn = mongoose.connection

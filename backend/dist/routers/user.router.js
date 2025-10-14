@@ -5,7 +5,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_controller_1 = require("../controllers/user.controller");
+const multer_1 = __importDefault(require("multer"));
+const path_1 = __importDefault(require("path"));
+const storage = multer_1.default.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path_1.default.join(__dirname, '../../src/assets'));
+    },
+    filename: (req, file, cb) => {
+        const ext = path_1.default.extname(file.originalname);
+        cb(null, JSON.parse(req.body.user).username + ext);
+    }
+});
+const upload = (0, multer_1.default)({ storage });
 const userRouter = express_1.default.Router();
 userRouter.route('/login').post((req, res) => new user_controller_1.UserController().login(req, res));
-userRouter.route('/register').post((req, res) => new user_controller_1.UserController().register(req, res));
+userRouter.route('/register').post(upload.single('pfp'), (req, res) => new user_controller_1.UserController().register(req, res));
 exports.default = userRouter;

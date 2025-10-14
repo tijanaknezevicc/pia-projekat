@@ -23,6 +23,7 @@ export class LoginComponent {
     this.userService.login(this.username, this.password).subscribe({
       next: (user) => {
           localStorage.setItem("logged", JSON.stringify(user))
+          localStorage.setItem("type", user.type)
           this.userService.setLogged(true)
           this.router.navigate([user.type])
           this.message = ""

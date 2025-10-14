@@ -33,7 +33,7 @@ export class UserController {
 
     register = async (req: express.Request, res: express.Response) => {
         try {
-            let user = req.body
+            let user = JSON.parse(req.body.user)
             
             let exists = await UserModel.findOne({email: user.email})
             if (exists) {
@@ -42,6 +42,8 @@ export class UserController {
 
             else {
                 user.password = await bcrypt.hash(user.password, SALT_ROUNDS)
+
+                user.pfp = req.file ? `${req.file.filename}` : 'default.png'
 
                 await new UserModel(user).save()
 

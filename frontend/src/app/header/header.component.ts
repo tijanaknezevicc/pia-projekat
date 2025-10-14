@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit{
 
   isCollapsed = true;
   isLogged = false;
+  type: string = ""
 
   private router = inject(Router)
   private userService = inject(UserService)
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit{
   logout() {
     localStorage.clear()
     this.userService.setLogged(false)
+    // this.userService.setType("")
     this.router.navigate([""])
   }
 }

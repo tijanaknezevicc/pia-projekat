@@ -22,9 +22,15 @@ export class RegisterComponent {
   user: User = new User()
   message = ""
   cardType: string | null = null
+  selectedFile: File | null = null
 
   register() {
-    this.userService.register(this.user).subscribe({
+    if (this.selectedFile) {
+      const ext = this.selectedFile.name.split('.').pop();
+      this.user.pfp = `assets/${this.user.username}.${ext}`;
+    }
+
+    this.userService.register(this.user, this.selectedFile).subscribe({
 
       next: (data) => {
         this.message = ""
@@ -57,8 +63,25 @@ export class RegisterComponent {
     this.router.navigate([""])
     }
 
-  onFileSelect(arg0: any) {
-    throw new Error('Method not implemented.')
+  onFileSelect(event: any) {
+    const file: File = event.target.files[0]
+    if (!file) return;
+
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file)
+
+    img.onload = () => {
+      if (img.width < 100 || img.height < 100 || img.width > 300 || img.height > 300) {
+        this.message = 'slika mora biti izmedju 100x100 i 300x300 px'
+        this.selectedFile = null
+      } else {
+        this.selectedFile = file
+        this.message = ''
+      }
+      URL.revokeObjectURL(objectUrl)
+    }
+
+    img.src = objectUrl;
   }
 
 

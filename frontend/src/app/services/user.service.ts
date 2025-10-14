@@ -14,8 +14,10 @@ export class UserService {
   private url = "http://localhost:4000/users"
 
   private loggedSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('logged'))
-
   logged$ = this.loggedSubject.asObservable()
+
+  // private typeSubject = new BehaviorSubject<string>(localStorage.getItem('type') || "");
+  // type$ = this.typeSubject.asObservable();
 
   isLogged() {
     return this.loggedSubject.next(false)
@@ -24,6 +26,15 @@ export class UserService {
   setLogged(status: boolean) {
     this.loggedSubject.next(status)
   }
+
+  // setType(type: string) {
+  //   this.typeSubject.next(type);
+  //   localStorage.setItem('type', type);
+  // }
+
+  // getType() {
+  //   return this.typeSubject.value;
+  // }
 
   login(u: string, p: string) {
     const data = {
@@ -34,7 +45,14 @@ export class UserService {
     return this.http.post<User>(`${this.url}/login`, data)
   }
 
-  register(u: User) {
-    return this.http.post<string>(`${this.url}/register`, u)
+  register(user: User, file?: File | null) {
+    const formData = new FormData();
+    formData.append('user', JSON.stringify(user))
+
+    if (file) {
+      formData.append('pfp', file);
+    }
+
+    return this.http.post<string>(`${this.url}/register`, formData)
   }
 }
