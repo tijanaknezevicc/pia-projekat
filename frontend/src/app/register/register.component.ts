@@ -5,6 +5,8 @@ import { User } from '../models/user';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
+declare var bootstrap: any
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -24,13 +26,25 @@ export class RegisterComponent {
   register() {
     this.userService.register(this.user).subscribe(data => {
       this.message = data
-      alert("vas nalog ceka na odobrenje administratora")
       this.router.navigate([""])
+      this.showModal()
     })
   }
 
+  showModal() {
+    const modalElement = document.getElementById('registerAlert');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
+  }
+
+  continue() {
+    this.router.navigate([""])
+    }
+
   onFileSelect(arg0: any) {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.')
   }
 
 

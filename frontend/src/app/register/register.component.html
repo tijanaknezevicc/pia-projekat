@@ -148,7 +148,7 @@
                 </div>
                   <div class="col-md-4 mb-4">
                     <p class="mb-2 pb-1">
-                      pol:<span class="required-star" style="color: red">*</span>
+                      pol<span class="required-star" style="color: red">*</span>
                     </p>
 
                     <div class="form-check form-check-inline">
@@ -302,7 +302,9 @@
 
               <div class="row">
                   <div class="mt-4 pt-2">
-                    <button class="btn btn-primary btn-lg" type="submit">registruj se</button>
+                    <button class="btn btn-primary btn-lg" type="submit" [disabled]="!registerForm.valid">
+                      registruj se
+                    </button>
                 </div>
 
                 </div>
@@ -314,3 +316,22 @@
     </div>
   </div>
 </section>
+
+<div class="modal fade" id="registerAlert" tabindex="-1" aria-labelledby="registerAlertLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="registerAlertLabel">registracija uspesna</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+      </div>
+      <div class="modal-body">
+        vas nalog ceka na odobrenje administratora
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="continue()">
+          u redu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
