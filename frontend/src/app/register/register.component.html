@@ -5,7 +5,14 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">registracija</h4>
+
             <form (ngSubmit)="register()" #registerForm="ngForm" enctype="multipart/form-data" novalidate>
+
+              @if (message != '') {
+              <div class="row">
+                <span class="mb-4" style="color: red">{{message}}</span>
+              </div>
+              }
 
               <div class="row">
                 <div class="col-md-4 mb-4">
@@ -320,7 +327,7 @@
 <div class="modal fade" id="registerAlert" tabindex="-1" aria-labelledby="registerAlertLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header bg-success text-white">
+      <div class="modal-header text-white" style="background-color: cadetblue;">
         <h5 class="modal-title" id="registerAlertLabel">registracija uspesna</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
       </div>

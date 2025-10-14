@@ -20,15 +20,27 @@ export class LoginComponent {
   message = ""
 
   login() {
-    this.userService.login(this.username, this.password).subscribe(user => {
-      if (user) {
-        localStorage.setItem("logged", JSON.stringify(user))
-        this.userService.setLogged(true)
-        this.router.navigate([user.type])
-        this.message = ""
-      }
-      else {
-        this.message = "greska: pogresno korisnicko ime ili lozinka!"
+    this.userService.login(this.username, this.password).subscribe({
+      next: (user) => {
+          localStorage.setItem("logged", JSON.stringify(user))
+          this.userService.setLogged(true)
+          this.router.navigate([user.type])
+          this.message = ""
+      },
+      error: (err) => {
+        switch (err.status) {
+          case 404:
+            this.message = "korisnik ne postoji ili nalog ceka na odobrenje";
+            break;
+          case 401:
+            this.message = "pogresna lozinka";
+            break;
+          case 500:
+            this.message = "server error";
+            break;
+          default:
+            this.message = "greska";
+        }
       }
     })
   }

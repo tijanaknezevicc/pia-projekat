@@ -24,10 +24,24 @@ export class RegisterComponent {
   cardType: string | null = null
 
   register() {
-    this.userService.register(this.user).subscribe(data => {
-      this.message = data
-      this.router.navigate([""])
-      this.showModal()
+    this.userService.register(this.user).subscribe({
+
+      next: (data) => {
+        this.message = ""
+        this.router.navigate([""])
+        this.showModal()
+      },
+      error: (err) => {
+        if (err.status === 400) {
+          this.message = 'email vec postoji u bazi';
+        }
+        else if (err.status === 500) {
+          this.message = 'server error';
+        }
+        else {
+          this.message = 'greska';
+        }
+      }
     })
   }
 
@@ -70,7 +84,7 @@ export class RegisterComponent {
   }
 
   detectCardType(value: string) {
-    if (/^4/.test(value)) {
+    if (/^(4539|4556|4916|4532|4929|4485|4716,)/.test(value)) {
       this.cardType = 'assets/cards/visa.png'
     } else if (/^5[1-5]/.test(value)) {
       this.cardType = 'assets/cards/mastercard.png'
