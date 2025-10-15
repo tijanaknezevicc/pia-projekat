@@ -7,6 +7,7 @@ import { TouristComponent } from './tourist/tourist.component';
 import { GuestComponent } from './guest/guest.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 export const routes: Routes = [
   {path: "", component: GuestComponent},
@@ -16,5 +17,6 @@ export const routes: Routes = [
   {path: "owner", component: OwnerComponent},
   {path: "tourist", component: TouristComponent},
   {path: "register", component: RegisterComponent},
-  {path: "profile", component: ProfileComponent}
+  {path: "profile", component: ProfileComponent},
+  {path: "change-password", component: ChangePasswordComponent},
 ];

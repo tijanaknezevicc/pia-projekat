@@ -1,12 +1,110 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { User } from '../models/user';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, NgIf],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
+
+  private userService = inject(UserService)
+  private router = inject(Router)
+
+  user: User = new User()
+  message = ""
+  cardType: string | null = null
+  selectedFile: File | null = null
+  backendUrl: string = "http://localhost:4000/assets/"
+  timestamp: number = Date.now()
+
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('logged')!)
+    this.detectCardType(this.user.payment!)
+  }
+
+  onFileSelect(event: any) {
+    const file: File = event.target.files[0]
+    if (!file) return;
+
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file)
+
+    img.onload = () => {
+      if (img.width < 100 || img.height < 100 || img.width > 300 || img.height > 300) {
+        this.message = 'slika mora biti izmedju 100x100 i 300x300 px'
+        this.selectedFile = null
+      } else {
+        this.selectedFile = file
+        this.message = ''
+      }
+      URL.revokeObjectURL(objectUrl)
+    }
+
+    img.src = objectUrl;
+  }
+
+  updateUser() {
+    this.userService.updateUser(this.user, this.selectedFile).subscribe({
+      next: (data) => {
+        this.message = ""
+        localStorage.setItem('logged', JSON.stringify(data))
+        this.user = data
+        this.timestamp = Date.now()
+      },
+      error: (err) => {
+        if (err.status === 400) {
+          this.message = 'email vec postoji u bazi';
+        }
+        else if (err.status === 500) {
+          this.message = 'server error';
+        }
+        else {
+          this.message = 'greska';
+        }
+      }
+    });
+  }
+
+  formatCardNumber(event: any) {
+    let input = event.target.value.replace(/\D/g, '')
+
+    if (/^(300|301|302|303|36|38)/.test(input)) {
+      input = input.substring(0, 15)
+      input = input.replace(/^(\d{4})(\d{0,7})(\d{0,4})/, '$1 $2 $3')
+      }
+
+    else {
+      input = input.replace(/(.{4})/g, '$1 ').trim()
+    }
+
+    event.target.value = input;
+    this.user.payment = input;
+    this.detectCardType(input.replace(/\s/g, ''))
+
+    if (!this.cardType) {
+      this.user.payment = '';
+    }
+  }
+
+  detectCardType(value: string) {
+    if (/^(4539|4556|4916|4532|4929|4485|4716,)/.test(value)) {
+      this.cardType = 'assets/cards/visa.png'
+    } else if (/^5[1-5]/.test(value)) {
+      this.cardType = 'assets/cards/mastercard.png'
+    } else if (/^(36|38|300|301|302|303)/.test(value)) {
+      this.cardType = 'assets/cards/diners.png';
+    } else {
+      this.cardType = null
+    }
+  }
+
+
 
 }

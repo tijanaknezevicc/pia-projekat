@@ -60,6 +60,46 @@ class UserController {
                 res.status(500).json('registracija neuspesna');
             }
         });
+        this.updateUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let user = JSON.parse(req.body.user);
+                let exists = yield user_1.default.findOne({ username: { $ne: user.username }, email: user.email });
+                if (exists) {
+                    res.status(400).json('email vec postoji u bazi');
+                    return;
+                }
+                if (req.file) {
+                    user.pfp = req.file ? `${req.file.filename}` : 'default.png';
+                }
+                yield user_1.default.updateOne({ username: user.username }, user);
+                let updated = yield user_1.default.findOne({ username: user.username });
+                res.status(200).json(updated);
+            }
+            catch (err) {
+                console.log(err);
+                res.status(500).json('update neuspesan');
+            }
+        });
+        this.changePassword = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let username = req.body.username;
+                let oldPassword = req.body.oldPassword;
+                let newPassword = req.body.newPassword;
+                let user = yield user_1.default.findOne({ username: username, active: true });
+                let correct = yield bcryptjs_1.default.compare(oldPassword, user.password);
+                if (!correct) {
+                    res.status(401).json('pogresna stara lozinka');
+                    return;
+                }
+                user.password = yield bcryptjs_1.default.hash(newPassword, SALT_ROUNDS);
+                yield user.save();
+                res.status(200).json('lozinka promenjena');
+            }
+            catch (err) {
+                console.log(err);
+                res.status(500).json('greska');
+            }
+        });
     }
 }
 exports.UserController = UserController;

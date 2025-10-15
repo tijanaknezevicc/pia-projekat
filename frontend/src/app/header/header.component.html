@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: cadetblue;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Vikendice</a>
+    <a class="navbar-brand" [href]="type">Vikendice</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
@@ -30,9 +30,16 @@
 
       <ul class="navbar-nav ms-auto">
 
-        <li class="nav-item" *ngIf="isLogged">
-          <button class="btn btn-danger" (click)="logout()">odjavi se</button>
-        </li>
+        <ng-container *ngIf="isLogged">
+          <li class="nav-item">
+            <button class="btn btn-primary me-2" (click)="changePassword()">promeni lozinku</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger" (click)="logout()">odjavi se</button>
+          </li>
+        </ng-container>
+
+
 
         <ng-container *ngIf="!isLogged">
           <li class="nav-item">

@@ -20,4 +20,6 @@ const upload = (0, multer_1.default)({ storage });
 const userRouter = express_1.default.Router();
 userRouter.route('/login').post((req, res) => new user_controller_1.UserController().login(req, res));
 userRouter.route('/register').post(upload.single('pfp'), (req, res) => new user_controller_1.UserController().register(req, res));
+userRouter.route('/updateUser').post(upload.single('pfp'), (req, res) => new user_controller_1.UserController().updateUser(req, res));
+userRouter.route('/changePassword').post((req, res) => new user_controller_1.UserController().changePassword(req, res));
 exports.default = userRouter;

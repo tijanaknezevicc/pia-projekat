@@ -80,7 +80,8 @@
                         class="form-control form-control-lg"
                         [(ngModel)]="user.email"
                         #emailCtrl="ngModel"
-                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                        pattern="^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$"
+
                         required>
 
                         <label class="form-label" for="email">

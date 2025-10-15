@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
-import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -18,11 +17,14 @@ export class HeaderComponent implements OnInit{
     this.userService.logged$.subscribe(status => {
       this.isLogged = status
     })
+    this.userService.type$.subscribe(type => {
+      this.type = type
+    })
   }
 
   isCollapsed = true;
   isLogged = false;
-  type: string = ""
+  type = ""
 
   private router = inject(Router)
   private userService = inject(UserService)
@@ -34,7 +36,11 @@ export class HeaderComponent implements OnInit{
   logout() {
     localStorage.clear()
     this.userService.setLogged(false)
-    // this.userService.setType("")
+    this.userService.setType("")
     this.router.navigate([""])
+  }
+
+  changePassword() {
+    this.router.navigate(["change-password"])
   }
 }

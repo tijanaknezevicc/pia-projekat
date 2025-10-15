@@ -26,4 +26,13 @@ userRouter.route('/register').post(
     (req, res) => new UserController().register(req, res)
   )
 
+userRouter.route('/updateUser').post(
+    upload.single('pfp'),
+    (req, res) => new UserController().updateUser(req, res)
+  )
+
+userRouter.route('/changePassword').post(
+    (req, res) => new UserController().changePassword(req, res)
+)
+
 export default userRouter
