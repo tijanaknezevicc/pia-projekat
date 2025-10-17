@@ -15,7 +15,6 @@ import { NgIf } from '@angular/common';
 export class ProfileComponent {
 
   private userService = inject(UserService)
-  private router = inject(Router)
 
   user: User = new User()
   message = ""
@@ -48,6 +47,12 @@ export class ProfileComponent {
     }
 
     img.src = objectUrl;
+  }
+
+  removePfp() {
+    this.user.pfp = "default.png"
+    this.selectedFile = null
+    this.message = ''
   }
 
   updateUser() {

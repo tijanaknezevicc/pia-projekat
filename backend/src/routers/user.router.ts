@@ -1,5 +1,6 @@
 import express from 'express'
 import { UserController } from '../controllers/user.controller'
+import { PropertyController } from '../controllers/property.controller'
 import multer from 'multer';
 import path from 'path';
 

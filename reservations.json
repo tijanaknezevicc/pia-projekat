@@ -1,0 +1,16 @@
+[
+    {
+        "dateBeg": "2023-06-01T14:00",
+        "dateEnd": "2023-06-10T02:30",
+        "propertyName": "Linden Forest House",
+        "propertyLocation": "Lipovica",
+        "owner": "pera1",
+        "renter": "jana",
+        "requests": "",
+        "approved": false,
+        "pending": true,
+        "rating": 0,
+        "comment": "",
+        "rejectionReason": ""
+     }
+]

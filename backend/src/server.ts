@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import userRouter from './routers/user.router'
+import propertyRouter from './routers/property.router'
 import path from 'path'
 
 const app = express()
@@ -17,8 +18,7 @@ conn.once('open', () => {
 
 const router = express.Router()
 router.use('/users', userRouter)
+router.use('/properties', propertyRouter)
 
 app.use('/', router)
 app.listen(4000, ()=>console.log('Express running on port 4000'))
-
-

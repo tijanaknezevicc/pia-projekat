@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Linden Forest House",
+        "location": "Lipovica",
+        "owner": "pera1",
+        "dateBlocked": "",
+        "images": ["slika1.jpg", "slika2.jpg"],
+        "services": "WiFi, Parking, Kamin",
+        "pricing": {
+            "summer": 100,
+            "winter": 120
+        },
+        "phone": "0612345678",
+        "comments": [
+            {
+                "user": "Jana",
+                "text": "Predivno mesto za odmor!"
+            },
+            {
+                "user": "Tijana",
+                "text": "Uživali smo"
+            }
+        ],
+        "ratings": [5, 4, 5, 5],
+        "coordinates": {
+            "x": 44.62665284514708,
+            "y": 20.42329991738214
+        }
+    },
+    {
+        "name": "Mountain Retreat",
+        "location": "Zlatibor",
+        "owner": "tijana",
+        "dateBlocked": "",
+        "images": ["slika3.jpg", "slika4.jpg"],
+        "services": "Bazen, Spa, Doručak",
+        "pricing": {
+            "summer": 150,
+            "winter": 180
+        },
+        "phone": "0698765432",
+        "comments": [
+            {
+                "user": "Marko",
+                "text": "Fantastičan pogled na planinu!"
+            }
+        ],
+        "ratings": [5, 5, 4],
+        "coordinates": {
+            "x": 43.724785,
+            "y": 19.699024
+        }
+    },
+    {
+        "name": "Seaside Villa",
+        "location": "Sutomore",
+        "owner": "tamara",
+        "dateBlocked": "",
+        "images": ["slika5.jpg", "slika6.jpg"],
+        "services": "Plaža, Bar, Sportski tereni",
+        "pricing": {
+            "summer": 200,
+            "winter": 220
+        },
+        "phone": "0671234567",
+        "comments": [
+            {
+                "user": "Ana",
+                "text": "Savršen za letnji odmor!"
+            }
+        ],
+        "ratings": [4, 5, 5, 4],
+        "coordinates": {
+            "x": 42.289717,
+            "y": 19.097202
+        }
+    }
+
+]

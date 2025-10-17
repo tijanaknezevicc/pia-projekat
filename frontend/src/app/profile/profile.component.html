@@ -4,7 +4,7 @@
       <div class="col-12 col-lg-11 col-xl-10">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">Moj profil</h4>
+            <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">moj profil</h4>
 
             <form (ngSubmit)="updateUser()" #profileForm="ngForm" enctype="multipart/form-data" novalidate>
 
@@ -16,9 +16,19 @@
 
               <div class="row align-items-center">
                 <div class="col-md-3 mb-4 text-center">
-                  <img [src]="backendUrl + user.pfp+ '?t=' + timestamp" alt="profilna slika"
-                    class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
-                  <input type="file" id="pfp" name="pfp" class="form-control mt-3" (change)="onFileSelect($event)">
+                  <div class="row mb-4 mt-4">
+                      <img [src]="backendUrl + user.pfp+ '?t=' + timestamp" alt="profilna slika" class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
+                      <input type="file" id="pfp" name="pfp" class="form-control mt-3" (change)="onFileSelect($event)">
+
+                      @if (user.pfp != "default.png") {
+                        <div class="row mb-4 mt-4">
+                      <button type="button" class="btn btn-secondary btn-md" (click)="removePfp()">
+                        ukloni profilnu sliku
+                        <!-- ovde namesti da se mozda ne promeni slika odmah cim se klikne dugme nego tek kad se potvrde izmene, takodje da dugme clearuje file input -->
+                      </button>
+                    </div>
+                      }
+                  </div>
                 </div>
 
                 <div class="col-md-9 mb-4">
