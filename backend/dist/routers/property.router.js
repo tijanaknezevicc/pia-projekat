@@ -20,4 +20,5 @@ const upload = (0, multer_1.default)({ storage });
 const propertyRouter = express_1.default.Router();
 propertyRouter.route('/guest-stats').get((req, res) => new property_controller_1.PropertyController().getGuestStats(req, res));
 propertyRouter.route('/all-properties').get((req, res) => new property_controller_1.PropertyController().getProperties(req, res));
+propertyRouter.route('/property-details/:name').get((req, res) => new property_controller_1.PropertyController().getPropertyByName(req, res));
 exports.default = propertyRouter;

@@ -25,4 +25,8 @@ propertyRouter.route('/all-properties').get(
     (req, res) => new PropertyController().getProperties(req, res)
 )
 
+propertyRouter.route('/property-details/:name').get(
+    (req, res) => new PropertyController().getPropertyByName(req, res)
+)
+
 export default propertyRouter

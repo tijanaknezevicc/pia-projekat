@@ -29,5 +29,7 @@ export class PropertyService {
     return this.http.get<Property[]>(`${this.url}/all-properties`, { params })
   }
 
-
+  getPropertyByName(name: string): Observable<Property> {
+    return this.http.get<Property>(`${this.url}/property-details/${encodeURIComponent(name)}`)
+  }
 }

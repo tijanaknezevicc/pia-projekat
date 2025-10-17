@@ -12,9 +12,9 @@ export class Property {
   phone = ""
   comments: {
     user: string,
+    rating: number,
     text: string
   }[] = []
-  ratings: number[] = []
   coordinates = {
     x: 0,
     y: 0

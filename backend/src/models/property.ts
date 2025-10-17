@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
     user: { type: String, required: true },
-    text: { type: String, required: true }
+    rating: { type: Number, required: true },
+    text: { type: String, default: '' }
 }, { _id: false });
 
 const pricingSchema = new mongoose.Schema({
@@ -25,7 +26,6 @@ const propertySchema = new mongoose.Schema({
     pricing: { type: pricingSchema, required: true },
     phone: { type: String, required: true },
     comments: { type: [commentSchema], default: [] },
-    ratings: { type: [Number], default: [] },
     coordinates: { type: coordinatesSchema, required: true }
 }, {
     versionKey: false

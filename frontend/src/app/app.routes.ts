@@ -10,6 +10,7 @@ import { PropertiesComponent } from './properties/properties.component';
 import { MyPropertiesComponent } from './my-properties/my-properties.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { StatsComponent } from './stats/stats.component';
+import { PropertyDetailsComponent } from './property-details/property-details.component';
 
 export const routes: Routes = [
   {path: "", component: GuestComponent},
@@ -24,4 +25,5 @@ export const routes: Routes = [
   {path: "my-properties", component: MyPropertiesComponent},
   {path: "reservations", component: ReservationsComponent},
   {path: "stats", component: StatsComponent},
+  {path: "property-details/:name", component: PropertyDetailsComponent},
 ];

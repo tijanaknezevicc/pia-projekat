@@ -2,6 +2,7 @@ import express from 'express'
 import UserModel from '../models/user'
 import PropertyModel from '../models/property'
 import ReservationModel from '../models/reservation'
+import property from '../models/property'
 
 export class PropertyController {
     getGuestStats = (req: express.Request, res: express.Response) => {
@@ -77,6 +78,23 @@ export class PropertyController {
             .sort(sortQuery)
             .then(properties => {
                 res.json(properties)
+            })
+            .catch(error => {
+                console.error(error)
+                res.status(500).json('greska')
+            });
+    }
+
+    getPropertyByName = (req: express.Request, res: express.Response) => {
+        let name = req.params.name
+
+        PropertyModel.findOne({ name: name })
+            .then(property => {
+                if (property) {
+                    res.json(property)
+                } else {
+                    res.status(404).json(null)
+                }
             })
             .catch(error => {
                 console.error(error)

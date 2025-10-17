@@ -69,6 +69,22 @@ class PropertyController {
                 res.status(500).json('greska');
             });
         };
+        this.getPropertyByName = (req, res) => {
+            let name = req.params.name;
+            property_1.default.findOne({ name: name })
+                .then(property => {
+                if (property) {
+                    res.json(property);
+                }
+                else {
+                    res.status(404).json(null);
+                }
+            })
+                .catch(error => {
+                console.error(error);
+                res.status(500).json('greska');
+            });
+        };
     }
 }
 exports.PropertyController = PropertyController;

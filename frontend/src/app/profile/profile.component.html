@@ -17,7 +17,7 @@
               <div class="row align-items-center">
                 <div class="col-md-3 mb-4 text-center">
                   <div class="row mb-4 mt-4">
-                      <img [src]="backendUrl + user.pfp+ '?t=' + timestamp" alt="profilna slika" class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
+                      <img [src]="backendUrl + user.pfp + '?t=' + timestamp" alt="profilna slika" class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
                       <input type="file" id="pfp" name="pfp" class="form-control mt-3" (change)="onFileSelect($event)">
 
                       @if (user.pfp != "default.png") {

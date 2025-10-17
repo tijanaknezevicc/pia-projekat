@@ -1,0 +1,69 @@
+<div class="container mt-4" *ngIf="property">
+
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <h2>{{ property.name }}</h2>
+      <p class="text-muted">{{ property.location }}</p>
+      <p><strong>kontakt telefon:</strong> {{ property.phone }}</p>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="btn btn-primary btn-lg" (click)="bookProperty()">rezervisi</button>
+    </div>
+  </div>
+
+  <div id="propertyCarousel" class="col-md-8 carousel slide mb-4 mx-auto" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      @for (img of property.images; track img; let i = $index) {
+        <div class="carousel-item" [class.active]="i === 0">
+          <img [src]="backendUrl + img" class="d-block w-100" alt="Slika vikendice">
+        </div>
+      }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">prethodna</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">sledeca</span>
+    </button>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h5>usluge:</h5>
+      <p>{{ property.services }}</p>
+    </div>
+    <div class="col-md-6">
+      <h5>cenovnik:</h5>
+      <ul class="list-group">
+        <li class="list-group-item">letnja sezona: {{ property.pricing.summer }}€ / dan</li>
+        <li class="list-group-item">zimska sezona: {{ property.pricing.winter }}€ / dan</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-12">
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h5>komentari:</h5>
+      @for (comment of property.comments; track comment) {
+        <div class="card mb-2">
+          <div class="card-body">
+            <h5 class="card-subtitle mb-1">{{ comment.user }}</h5>
+            <h6 class="text-muted">ocena: {{ comment.rating}}</h6>
+            <p *ngIf="comment.text" class="card-text">{{ comment.text }}</p>
+          </div>
+        </div>
+      }
+      <div *ngIf="property.comments.length === 0" class="alert alert-info">Nema komentara.</div>
+    </div>
+    <div class="col-md-6">
+      <h5>lokacija:</h5>
+      <div id="map" style="height:400px; width:100%;"></div>
+    </div>
+  </div>
+</div>
