@@ -6,8 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const guestsSchema = new mongoose_1.default.Schema({
     adults: { type: Number, required: true },
-    children: { type: Number, required: true, default: 0 },
-    text: { type: String, default: '' }
+    children: { type: Number, required: true, default: 0 }
 }, { _id: false });
 const reservationSchema = new mongoose_1.default.Schema({
     dateBeg: { type: Date, required: true },

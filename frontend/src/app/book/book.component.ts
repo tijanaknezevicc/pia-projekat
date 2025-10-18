@@ -1,10 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyService } from '../services/property.service';
 import { Property } from '../models/property';
 import { User } from '../models/user';
 import { Reservation } from '../models/reservation';
 import { Router } from '@angular/router';
+import flatpickr from 'flatpickr';
 
 @Component({
   selector: 'app-book',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
-export class BookComponent implements OnInit {
+export class BookComponent implements OnInit, AfterViewInit {
 
   step1!: FormGroup
   step2!: FormGroup
@@ -23,6 +24,9 @@ export class BookComponent implements OnInit {
   message = ""
   logged!: User
 
+  displayDateBeg: string = ''
+  displayDateEnd: string = ''
+
   private fb = inject(FormBuilder)
   private propertyService = inject(PropertyService)
   private router = inject(Router)
@@ -30,8 +34,6 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
     this.property = JSON.parse(localStorage.getItem('bookingProperty')!)
     this.logged = JSON.parse(localStorage.getItem('logged')!)
-
-    console.log(this.logged);
 
     this.step1 = this.fb.group({
       dateBeg: ['', Validators.required],
@@ -46,18 +48,81 @@ export class BookComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.flatpickrInit();
+  }
+
+  flatpickrInit() {
+    let today = new Date()
+    if (today.getHours() < 14) {
+      today.setHours(14, 0, 0, 0)
+    }
+
+    let startPicker: any
+    let endPicker: any
+
+    startPicker = flatpickr("#dateBeg", {
+      enableTime: true,
+      time_24hr: true,
+      dateFormat: "Y-m-d H:i",
+      minDate: "today",
+      minTime: "14:00",
+      onChange: (selectedDates, dateStr) => {
+        let start = selectedDates[0];
+        if (start) {
+          this.step1.patchValue({ dateBeg: start.toISOString() })
+          this.displayDateBeg = this.formatDate(start);
+
+          let minEndDate = new Date(start);
+          minEndDate.setDate((new Date(start)).getDate() + 1)
+          minEndDate.setHours(10, 0, 0, 0);
+          endPicker.set("minDate", minEndDate)
+        }
+      }
+    })
+
+    endPicker = flatpickr("#dateEnd", {
+      enableTime: true,
+      time_24hr: true,
+      dateFormat: "Y-m-d H:i",
+      minDate: "today",
+      maxTime: "10:00",
+      onChange: (selectedDates) => {
+        let end = selectedDates[0];
+        if (end) {
+          this.step1.patchValue({ dateEnd: end.toISOString() })
+          this.displayDateEnd = this.formatDate(end)
+        }
+      }
+    })
+  }
+
   nextStep() {
     if (this.step1.valid) {
-    let { dateBeg, dateEnd } = this.step1.value
-    let days = this.getDuration(dateBeg, dateEnd)
-    this.calculatePrice(dateBeg, dateEnd)
-    this.step = 2
+      let { dateBeg, dateEnd } = this.step1.value
+      this.totalPrice = this.calculatePrice(dateBeg, dateEnd)
+      this.step = 2
     }
   }
 
   previousStep() {
     this.step = 1;
+    setTimeout(() => {
+      this.flatpickrInit();
+    }, 0)
   }
+
+  formatDate(date: Date): string {
+    return date.toLocaleString('sr-RS', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  }
+
 
   addReservation() {
     if (this.step2.valid) {
@@ -78,32 +143,34 @@ export class BookComponent implements OnInit {
       this.propertyService.addReservation(newReservation).subscribe({
         next: (response) => {
           console.log('reservation successful:', response);
-          alert('uspesno ste rezervisali vikendicu!')
+          alert('uspesno ste rezervisali vikendicu!') // umesto ovoga modal mozda nekad kao na register komponenti ako me ne bude mrzelo
           this.router.navigate(['/properties'])
         },
-        error: (error) => {
-          console.error('error reserving property:', error);
+        error: (err) => {
+          if (err.status === 409) {
+            alert('vikendica je vec rezervisana u odabranom periodu')
+          } else if (err.status === 406) {
+            alert('vikendica je blokirana tokom odabranog perioda')
+          } else {
+            alert('greska')
+          }
         }
       });
     }
   }
 
-  private getDuration(start: Date, end: Date) {
-    const s = new Date(start);
-    const e = new Date(end);
-    const diff = e.getTime() - s.getTime();
-    return Math.ceil(diff / (1000 * 60 * 60 * 24));
-  }
+  private calculatePrice(start: Date, end: Date) : number {
+    let totPrice = 0
 
-  private calculatePrice(start: Date, end: Date) {
     for (let i = new Date(start); i < new Date(end); i.setDate(i.getDate() + 1)) {
       let month = i.getMonth() + 1
       if (month >= 5 && month <= 8) {
-        this.totalPrice += this.property.pricing.summer
+        totPrice += this.property.pricing.summer
       }
       else {
-        this.totalPrice += this.property.pricing.winter
+        totPrice += this.property.pricing.winter
       }
     }
+    return totPrice
   }
 }

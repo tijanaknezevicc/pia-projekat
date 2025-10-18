@@ -8,11 +8,11 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label>datum pocetka</label>
-          <input type="datetime-local" formControlName="dateBeg" class="form-control">
+          <input id="dateBeg" type="datetime" class="form-control">
         </div>
         <div class="col-md-6">
           <label>datum kraja</label>
-          <input type="datetime-local" formControlName="dateEnd" class="form-control">
+          <input id="dateEnd" type="datetime" class="form-control">
         </div>
       </div>
       <div class="row mb-3">
@@ -35,7 +35,7 @@
     <div [formGroup]="step2">
       <h5>pregled rezervacije</h5>
       <p><b>vikendica:</b> {{ property.name }}</p>
-      <p><b>datum:</b> {{ step1.value.dateBeg }} - {{ step1.value.dateEnd }}</p>
+      <p><b>datum:</b> {{ displayDateBeg }} - {{ displayDateEnd }}</p>
       <p><b>odrasli:</b> {{ step1.value.adults }}, <b>deca:</b> {{ step1.value.children }}</p>
       <p><b>ukupna cena:</b> {{ totalPrice }}€</p>
 

@@ -96,13 +96,73 @@ export class PropertyController {
             });
     }
 
+    // addReservation = (req: express.Request, res: express.Response) => {
+    //     let reservation = new ReservationModel(req.body)
+    //     reservation.save().then(() => {
+    //         res.status(200).json('ok')
+    //     }).catch(err => {
+    //         console.log(err)
+    //         res.status(500).json('greska')
+    //     })
+    // }
+
     addReservation = (req: express.Request, res: express.Response) => {
-        let reservation = new ReservationModel(req.body)
-        reservation.save().then(() => {
-            res.status(200).json('ok')
-        }).catch(err => {
-            console.log(err)
-            res.status(500).json('greska')
-        })
+        let reservation = req.body
+        PropertyModel.findOne({ name: reservation.propertyName })
+            .then(property => {
+                if (!property) {
+                    res.status(404).json('vikendica nije pronadjena')
+                    return
+                }
+
+                let blocked = this.checkPropertyBlocked(reservation.dateBeg, reservation.dateEnd, property)
+                if (blocked) {
+                    res.status(406).json('vikendica je blokirana tokom odabranog perioda')
+                    return
+                }
+    
+                this.checkDateConflicts(reservation, res);
+            })
+            .catch(err => {
+                res.status(500).json('greska')
+            })
     }
+    
+    private checkPropertyBlocked = (dateBeg: any, dateEnd: any, property: any) => {
+        if (!property.dateBlocked) {  return false }
+    
+        const blockEnd = new Date(property.dateBlocked)
+        blockEnd.setHours(blockEnd.getHours() + 48)
+
+        return dateBeg < blockEnd && property.dateBlocked < dateEnd;
+
+    }
+
+    private checkDateConflicts = (reservation: any, res: express.Response) => {
+        ReservationModel.find({
+            propertyName: reservation.propertyName, approved: true, dateBeg: { $lt: reservation.dateEnd }, dateEnd: { $gt: reservation.dateBeg }
+        })
+        .then(conflicts => {
+            if (conflicts.length > 0) {
+                return res.status(409).json('vikendica je rezervisana u odabranom periodu')
+            }
+    
+            this.saveReservation(reservation, res);
+        })
+        .catch(err => {
+            res.status(500).json('greska')
+        });
+    }
+    
+    private saveReservation = (reservationData: any, res: express.Response) => {
+        const reservation = new ReservationModel(reservationData);
+        
+        reservation.save()
+            .then(ok => {
+                res.status(200).json('rezervacija kreirana')
+            })
+            .catch(err => {
+                res.status(500).json('greska')
+            })
+    }   
 }
