@@ -85,6 +85,15 @@ class PropertyController {
                 res.status(500).json('greska');
             });
         };
+        this.addReservation = (req, res) => {
+            let reservation = new reservation_1.default(req.body);
+            reservation.save().then(() => {
+                res.status(200).json('ok');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
     }
 }
 exports.PropertyController = PropertyController;

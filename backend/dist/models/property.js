@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const commentSchema = new mongoose_1.default.Schema({
     user: { type: String, required: true },
-    text: { type: String, required: true }
+    rating: { type: Number, required: true },
+    text: { type: String, default: '' }
 }, { _id: false });
 const pricingSchema = new mongoose_1.default.Schema({
     summer: { type: Number, required: true },
@@ -26,7 +27,6 @@ const propertySchema = new mongoose_1.default.Schema({
     pricing: { type: pricingSchema, required: true },
     phone: { type: String, required: true },
     comments: { type: [commentSchema], default: [] },
-    ratings: { type: [Number], default: [] },
     coordinates: { type: coordinatesSchema, required: true }
 }, {
     versionKey: false

@@ -52,13 +52,9 @@ export class PropertyController {
         if (searchName || searchLocation) {
             const conditions: any[] = []
             
-            if (searchName) {
-                conditions.push({name: { $regex: searchName as string, $options: 'i'}})
-            }
+            if (searchName) { conditions.push({name: { $regex: searchName as string, $options: 'i'}}) }
             
-            if (searchLocation) {
-                conditions.push({location: { $regex: searchLocation as string, $options:'i' }})
-            }
+            if (searchLocation) { conditions.push({location: { $regex: searchLocation as string, $options:'i' }}) }
             
             searchQuery = { $and: conditions }
         }
@@ -69,9 +65,7 @@ export class PropertyController {
             const sortField = sortBy as string
             const sortDirection = sortOrder === 'desc' ? -1 : 1
             
-            if (['name', 'location'].includes(sortField)) {
-                sortQuery[sortField] = sortDirection
-            }
+            if (['name', 'location'].includes(sortField)) { sortQuery[sortField] = sortDirection }
         }
 
         PropertyModel.find(searchQuery)
@@ -102,6 +96,13 @@ export class PropertyController {
             });
     }
 
-    
-
+    addReservation = (req: express.Request, res: express.Response) => {
+        let reservation = new ReservationModel(req.body)
+        reservation.save().then(() => {
+            res.status(200).json('ok')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
 }

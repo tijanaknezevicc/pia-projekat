@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+const guestsSchema = new mongoose.Schema({
+    adults: { type: Number, required: true },
+    children: { type: Number, required: true, default: 0 }
+}, { _id: false });
+
 const reservationSchema = new mongoose.Schema({
     dateBeg: { type: Date, required: true },
     dateEnd: { type: Date, required: true },
@@ -8,8 +13,7 @@ const reservationSchema = new mongoose.Schema({
     propertyLocation: { type: String, required: true },
     owner: { type: String, required: true },
     renter: { type: String, required: true },
-    adults: { type: Number, required: true },
-    children: { type: Number, required: true },
+    guests: { type: guestsSchema, required: true },
     requests: { type: String, maxlength: 500 },
     approved: { type: Boolean, default: false },
     pending: { type: Boolean, default: true },

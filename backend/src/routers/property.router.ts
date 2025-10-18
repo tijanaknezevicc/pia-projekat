@@ -29,4 +29,8 @@ propertyRouter.route('/property-details/:name').get(
     (req, res) => new PropertyController().getPropertyByName(req, res)
 )
 
+propertyRouter.route('/add-reservation').post(
+    (req, res) => new PropertyController().addReservation(req, res)
+)
+
 export default propertyRouter

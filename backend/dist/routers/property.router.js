@@ -21,4 +21,5 @@ const propertyRouter = express_1.default.Router();
 propertyRouter.route('/guest-stats').get((req, res) => new property_controller_1.PropertyController().getGuestStats(req, res));
 propertyRouter.route('/all-properties').get((req, res) => new property_controller_1.PropertyController().getProperties(req, res));
 propertyRouter.route('/property-details/:name').get((req, res) => new property_controller_1.PropertyController().getPropertyByName(req, res));
+propertyRouter.route('/add-reservation').post((req, res) => new property_controller_1.PropertyController().addReservation(req, res));
 exports.default = propertyRouter;

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Property } from '../models/property';
+import { Reservation } from '../models/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class PropertyService {
 
   getPropertyByName(name: string): Observable<Property> {
     return this.http.get<Property>(`${this.url}/property-details/${encodeURIComponent(name)}`)
+  }
+
+  addReservation(reservation: Reservation) {
+    return this.http.post(`${this.url}/add-reservation`, reservation);
   }
 }

@@ -1,8 +1,62 @@
-@if (step == 1) {
+<div class="container mt-4">
 
-}
+  <div class="card p-3 mb-3">
+    <h4>rezervacija vikendice: {{ property.name }}</h4>
 
+    @if (step === 1) {
+    <form [formGroup]="step1">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>datum pocetka</label>
+          <input type="datetime-local" formControlName="dateBeg" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label>datum kraja</label>
+          <input type="datetime-local" formControlName="dateEnd" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>broj odraslih</label>
+          <input type="number" formControlName="adults" class="form-control" min="1">
+        </div>
+        <div class="col-md-6">
+          <label>broj dece</label>
+          <input type="number" formControlName="children" class="form-control" min="0">
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" (click)="nextStep()" [disabled]="!step1.valid || step1.value.dateBeg > step1.value.dateEnd">
+        dalje
+      </button>
+    </form>
+    }
 
-@if (step == 2) {
+    @if (step === 2) {
+    <div [formGroup]="step2">
+      <h5>pregled rezervacije</h5>
+      <p><b>vikendica:</b> {{ property.name }}</p>
+      <p><b>datum:</b> {{ step1.value.dateBeg }} - {{ step1.value.dateEnd }}</p>
+      <p><b>odrasli:</b> {{ step1.value.adults }}, <b>deca:</b> {{ step1.value.children }}</p>
+      <p><b>ukupna cena:</b> {{ totalPrice }}€</p>
 
-}
+      <div class="mb-3">
+        <label>kartica</label>
+        <input type="text" [(ngModel)]="logged.payment" formControlName="cardNumber" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label>dodatni zahtevi (opciono)</label>
+        <textarea formControlName="comment" class="form-control" rows="3" maxlength="500"></textarea>
+      </div>
+
+      <button class="btn btn-secondary me-2" (click)="previousStep()">nazad</button>
+      <button class="btn btn-success" (click)="addReservation()" [disabled]="!step2.valid">potvrdi rezervaciju</button>
+    </div>
+    }
+
+    @if (message) {
+    <div class="alert alert-info mt-3">{{ message }}</div>
+    }
+  </div>
+
+</div>
