@@ -1,6 +1,6 @@
-<div class="container mt-4" *ngIf="property">
+<div class="container mt-4">
 
-  <div class="row mb-3">
+  <div *ngIf="property" class="row mb-3">
     <div class="col-md-8">
       <h2>{{ property.name }}</h2>
       <p class="text-muted">{{ property.location }}</p>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div id="propertyCarousel" class="col-md-8 carousel slide mb-4 mx-auto" data-bs-ride="carousel">
+  <div *ngIf="property" id="propertyCarousel" class="col-md-8 carousel slide mb-4 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
       @for (img of property.images; track img; let i = $index) {
         <div class="carousel-item" [class.active]="i === 0">
@@ -29,7 +29,7 @@
     </button>
   </div>
 
-  <div class="row mb-4">
+  <div *ngIf="property" class="row mb-4">
     <div class="col-md-6">
       <h5>usluge:</h5>
       <p>{{ property.services }}</p>
