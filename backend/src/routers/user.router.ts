@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     }
   })
   
-  const upload = multer({ storage })
+const upload = multer({ storage })
 
 const userRouter = express.Router()
 
@@ -31,13 +31,29 @@ userRouter.route('/register').post(
     (req, res) => new UserController().register(req, res)
   )
 
-userRouter.route('/updateUser').post(
+userRouter.route('/update-user').post(
     upload.single('pfp'),
     (req, res) => new UserController().updateUser(req, res)
   )
 
 userRouter.route('/change-password').post(
     (req, res) => new UserController().changePassword(req, res)
+)
+
+userRouter.route('/get-users').get(
+    (req, res) => new UserController().getAllUsers(req, res)
+)
+
+userRouter.route('/change-active-status').post(
+    (req, res) => new UserController().changeActiveStatus(req, res)
+)
+
+userRouter.route('/approve-user').post(
+    (req, res) => new UserController().approveUser(req, res)
+)
+
+userRouter.route('/reject-user').post(
+    (req, res) => new UserController().rejectUser(req, res)
 )
 
 userRouter.route('/get-reservations-owner').post(

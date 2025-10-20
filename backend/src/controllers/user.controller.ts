@@ -2,6 +2,7 @@ import express from 'express'
 import UserModel from '../models/user'
 import PropertyModel from '../models/property'
 import ReservationModel from '../models/reservation'
+import BurnBookModel from '../models/burn-book'
 import bcrypt from 'bcryptjs'
 
 const SALT_ROUNDS = 10
@@ -59,7 +60,7 @@ export class UserController {
         }
     }
 
-    register = async (req: express.Request, res: express.Response) => {
+    register = async (req: express.Request, res: express.Response) => { // popravi da proveri i burnbook
         try {
             let user = JSON.parse(req.body.user)
             
@@ -131,6 +132,57 @@ export class UserController {
             console.log(err)
             res.status(500).json('greska')
         }
+    }
+
+    getAllUsers = (req: express.Request, res: express.Response) => {
+        UserModel.find({}).then(users => {
+            res.status(200).json(users)
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    changeActiveStatus = (req: express.Request, res: express.Response) => {
+        let user = req.body
+
+        UserModel.updateOne({username: user.username}, {active: !user.active}).then(ok => {
+            res.status(200).json('status promenjen')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    approveUser = (req: express.Request, res: express.Response) => {
+        let user = req.body
+
+        UserModel.updateOne({username: user.username}, {approved: true}).then(ok => {
+            res.status(200).json('korisnik odobren')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    rejectUser = (req: express.Request, res: express.Response) => {
+        let user = req.body
+        let banned = {
+            username: user.username,
+            email: user.email
+        }
+
+        new BurnBookModel(banned).save().then(ok => {
+            UserModel.deleteOne({username: user.username}).then(ok => {
+                res.status(200).json('korisnik odbijen')
+            }).catch(err => {
+                console.log(err)
+                res.status(500).json('greska')
+            })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
     }
 
     getReservationsOwner = (req: express.Request, res: express.Response) => {

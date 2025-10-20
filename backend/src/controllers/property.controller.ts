@@ -95,15 +95,6 @@ export class PropertyController {
             });
     }
 
-    // addReservation = (req: express.Request, res: express.Response) => {
-    //     let reservation = new ReservationModel(req.body)
-    //     reservation.save().then(() => {
-    //         res.status(200).json('ok')
-    //     }).catch(err => {
-    //         console.log(err)
-    //         res.status(500).json('greska')
-    //     })
-    // }
 
     addReservation = (req: express.Request, res: express.Response) => {
         let reservation = req.body
@@ -163,5 +154,86 @@ export class PropertyController {
             .catch(err => {
                 res.status(500).json('greska')
             })
-    }   
+    }  
+    
+    blockProperty = (req: express.Request, res: express.Response) => {
+        let property = req.body
+        let now = new Date()
+        
+        PropertyModel.updateOne({name: property.name}, {dateBlocked: now}).then(ok => {
+            res.status(200).json('blokirana vikendica')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    getReservationsByMonth = (req: express.Request, res: express.Response) => {
+        let month = req.body.month // 0-11
+        let property = req.body.propertyName
+
+    }
+
+    // getReservationsByMonth = (req: express.Request, res: express.Response) => {
+    //     let owner = req.body.owner
+    //     let year = req.body.year || new Date().getFullYear()
+    
+    //     // Pronađi sve vikendice vlasnika
+    //     PropertyModel.find({ owner: owner }).then(properties => {
+    //         if (properties.length === 0) {
+    //             return res.status(404).json('nema vikendica za ovog vlasnika')
+    //         }
+    
+    //         let results: any[] = []
+    //         let processedCount = 0
+    
+    //         // Za svaku vikendicu
+    //         properties.forEach((property, index) => {
+    //             this.processPropertyReservations(property.name, year, (monthlyData) => {
+    //                 results.push({
+    //                     propertyName: property.name,
+    //                     monthlyReservations: monthlyData
+    //                 })
+    
+    //                 processedCount++
+    
+    //                 // Kada su sve obrađene, pošalji rezultat
+    //                 if (processedCount === properties.length) {
+    //                     res.status(200).json(results)
+    //                 }
+    //             })
+    //         })
+    
+    //     }).catch(err => {
+    //         console.log(err)
+    //         res.status(500).json('greska')
+    //     })
+    // }
+    
+    // private processPropertyReservations = (propertyName: string, year: number, callback: (data: number[]) => void) => {
+    //     let startOfYear = new Date(year, 0, 1)
+    //     let endOfYear = new Date(year + 1, 0, 1)
+    
+    //     ReservationModel.find({
+    //         propertyName: propertyName,
+    //         approved: true,
+    //         dateBeg: { $gte: startOfYear, $lt: endOfYear }
+    //     }).then(reservations => {
+    //         // Inicijalizuj niz sa 12 nula
+    //         let monthlyCount = new Array(12).fill(0)
+    
+    //         // Prebroji rezervacije po mesecima
+    //         reservations.forEach(reservation => {
+    //             let month = new Date(reservation.dateBeg).getMonth()
+    //             monthlyCount[month]++
+    //         })
+    
+    //         callback(monthlyCount)
+    //     }).catch(err => {
+    //         console.log('Greška za vikendicu:', propertyName, err)
+    //         // Vrati nule u slučaju greške
+    //         callback(new Array(12).fill(0))
+    //     })
+    // }
+
 }

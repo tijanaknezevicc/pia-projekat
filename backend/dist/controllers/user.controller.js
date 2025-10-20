@@ -16,6 +16,7 @@ exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
 const property_1 = __importDefault(require("../models/property"));
 const reservation_1 = __importDefault(require("../models/reservation"));
+const burn_book_1 = __importDefault(require("../models/burn-book"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const SALT_ROUNDS = 10;
 class UserController {
@@ -125,6 +126,50 @@ class UserController {
                 res.status(500).json('greska');
             }
         });
+        this.getAllUsers = (req, res) => {
+            user_1.default.find({}).then(users => {
+                res.status(200).json(users);
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.changeActiveStatus = (req, res) => {
+            let user = req.body;
+            user_1.default.updateOne({ username: user.username }, { active: !user.active }).then(ok => {
+                res.status(200).json('status promenjen');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.approveUser = (req, res) => {
+            let user = req.body;
+            user_1.default.updateOne({ username: user.username }, { approved: true }).then(ok => {
+                res.status(200).json('korisnik odobren');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.rejectUser = (req, res) => {
+            let user = req.body;
+            let banned = {
+                username: user.username,
+                email: user.email
+            };
+            new burn_book_1.default(banned).save().then(ok => {
+                user_1.default.deleteOne({ username: user.username }).then(ok => {
+                    res.status(200).json('korisnik odbijen');
+                }).catch(err => {
+                    console.log(err);
+                    res.status(500).json('greska');
+                });
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
         this.getReservationsOwner = (req, res) => {
             let username = req.body.username;
             reservation_1.default.find({ owner: username }).sort({ dateBeg: -1 })

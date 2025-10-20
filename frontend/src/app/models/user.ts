@@ -11,4 +11,5 @@ export class User {
   payment = ""
   pfp = "default.png"
   active = false
+  approved = false
 }

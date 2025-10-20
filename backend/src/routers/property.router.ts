@@ -33,4 +33,8 @@ propertyRouter.route('/add-reservation').post(
     (req, res) => new PropertyController().addReservation(req, res)
 )
 
+propertyRouter.route('/block-property').post(
+    (req, res) => new PropertyController().blockProperty(req, res)
+)
+
 export default propertyRouter

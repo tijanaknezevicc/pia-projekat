@@ -22,4 +22,5 @@ propertyRouter.route('/guest-stats').get((req, res) => new property_controller_1
 propertyRouter.route('/all-properties').get((req, res) => new property_controller_1.PropertyController().getProperties(req, res));
 propertyRouter.route('/property-details/:name').get((req, res) => new property_controller_1.PropertyController().getPropertyByName(req, res));
 propertyRouter.route('/add-reservation').post((req, res) => new property_controller_1.PropertyController().addReservation(req, res));
+propertyRouter.route('/block-property').post((req, res) => new property_controller_1.PropertyController().blockProperty(req, res));
 exports.default = propertyRouter;
