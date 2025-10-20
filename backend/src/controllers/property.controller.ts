@@ -2,7 +2,6 @@ import express from 'express'
 import UserModel from '../models/user'
 import PropertyModel from '../models/property'
 import ReservationModel from '../models/reservation'
-import property from '../models/property'
 
 export class PropertyController {
     getGuestStats = (req: express.Request, res: express.Response) => {

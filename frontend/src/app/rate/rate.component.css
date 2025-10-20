@@ -1,0 +1,15 @@
+.star-input {
+  font-size: 2.5em;
+  color: #bbbbbb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.star-input.filled {
+  color: rgb(173, 112, 223);
+}
+
+.star-input.hover {
+  color: rgb(173, 112, 223);
+}

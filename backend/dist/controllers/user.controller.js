@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
+const property_1 = __importDefault(require("../models/property"));
+const reservation_1 = __importDefault(require("../models/reservation"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const SALT_ROUNDS = 10;
 class UserController {
@@ -100,6 +102,65 @@ class UserController {
                 res.status(500).json('greska');
             }
         });
+        this.getReservationsOwner = (req, res) => {
+            let username = req.body;
+            reservation_1.default.find({ owner: username }).sort({ dateBeg: -1 })
+                .then(reservations => {
+                res.status(200).json(reservations);
+            })
+                .catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.getReservationsTourist = (req, res) => {
+            let username = req.body.username;
+            reservation_1.default.find({ renter: username, approved: true }).sort({ dateBeg: -1 })
+                .then(data => {
+                res.status(200).json(data);
+            })
+                .catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.addRating = (req, res) => {
+            let reservation = req.body;
+            let newComment = {
+                user: reservation.renter,
+                text: reservation.comment,
+                rating: reservation.rating
+            };
+            reservation_1.default.updateOne({ _id: reservation._id }, { comment: reservation.comment, rating: reservation.rating }).then(ok => {
+                property_1.default.updateOne({ name: reservation.propertyName }, { $push: { comments: newComment } }).then(ok => {
+                    res.status(200).json('uspesno dodavanje komentara');
+                }).catch(err => {
+                    console.log(err);
+                    res.status(500).json('greska');
+                });
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.cancelReservation = (req, res) => {
+            let reservation = req.body;
+            reservation_1.default.deleteOne({ _id: reservation._id }).then(ok => {
+                res.status(200).json('otkazana rezervacija');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.processReservation = (req, res) => {
+            let reservation = req.body;
+            reservation_1.default.updateOne({ _id: reservation._id }, { approved: reservation.approved, pending: false, rejectionReason: reservation.rejectionReason }).then(ok => {
+                res.status(200).json('obradjena rezervacija');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
     }
 }
 exports.UserController = UserController;

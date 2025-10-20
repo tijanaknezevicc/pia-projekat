@@ -1,5 +1,7 @@
 import express from 'express'
 import UserModel from '../models/user'
+import PropertyModel from '../models/property'
+import ReservationModel from '../models/reservation'
 import bcrypt from 'bcryptjs'
 
 const SALT_ROUNDS = 10
@@ -103,5 +105,75 @@ export class UserController {
             console.log(err)
             res.status(500).json('greska')
         }
+    }
+
+    getReservationsOwner = (req: express.Request, res: express.Response) => {
+        let username = req.body
+
+        ReservationModel.find({owner: username}).sort({ dateBeg: -1 })
+            .then(reservations => {
+                res.status(200).json(reservations)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).json('greska')
+            })
+    }
+
+    getReservationsTourist = (req: express.Request, res: express.Response) => {
+        let username = req.body.username
+
+        ReservationModel.find({renter: username, approved: true}).sort({ dateBeg: -1 })
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).json('greska')
+            })
+    }
+
+    addRating = (req: express.Request, res: express.Response) => {
+        let reservation = req.body
+
+        let newComment = {
+            user: reservation.renter,
+            text: reservation.comment,
+            rating: reservation.rating
+        }
+
+        ReservationModel.updateOne({_id: reservation._id}, {comment: reservation.comment, rating: reservation.rating}).then(ok => {
+            PropertyModel.updateOne({ name: reservation.propertyName }, {$push: {comments: newComment}}).then(ok => {
+                res.status(200).json('uspesno dodavanje komentara')
+                }).catch(err => {
+                    console.log(err)
+                    res.status(500).json('greska')
+                })
+            }).catch(err => {
+                console.log(err)
+                res.status(500).json('greska')
+            })
+    }
+
+    cancelReservation = (req: express.Request, res: express.Response) => {
+        let reservation = req.body
+
+        ReservationModel.deleteOne({_id: reservation._id}).then(ok => {
+            res.status(200).json('otkazana rezervacija')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    processReservation = (req: express.Request, res: express.Response) => {
+        let reservation = req.body
+
+        ReservationModel.updateOne({_id: reservation._id}, {approved: reservation.approved, pending: false, rejectionReason: reservation.rejectionReason}).then(ok => {
+            res.status(200).json('obradjena rezervacija')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
     }
 }

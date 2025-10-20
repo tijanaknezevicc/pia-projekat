@@ -12,6 +12,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { StatsComponent } from './stats/stats.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { BookComponent } from './book/book.component';
+import { RateComponent } from './rate/rate.component';
 
 export const routes: Routes = [
   {path: "", component: GuestComponent},
@@ -28,4 +29,5 @@ export const routes: Routes = [
   {path: "stats", component: StatsComponent},
   {path: "property-details/:name", component: PropertyDetailsComponent},
   {path: "book-property", component: BookComponent},
+  {path: "rate-property/:name", component: RateComponent},
 ];

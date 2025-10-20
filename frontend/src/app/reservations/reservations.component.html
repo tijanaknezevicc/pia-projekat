@@ -1,1 +1,113 @@
-<p>reservations works!</p>
+@if (type === 'tourist') {
+  <div class="container mt-4">
+
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>trenutne rezervacije</h5>
+      </div>
+      <div class="card-body">
+        @if (current.length > 0) {
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>pocetak</th>
+              <th>vikendica</th>
+              <th>mesto</th>
+              <th>akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (reservation of current; track reservation) {
+            <tr>
+              <td>{{reservation.dateBeg | date:'dd.MM.yyyy. HH:mm'}}</td>
+              <td>{{reservation.propertyName}}</td>
+              <td>{{reservation.propertyLocation}}</td>
+              <td>
+                @if (canCancel(reservation)) {
+                <button class="btn btn-danger btn-sm" (click)="cancelReservation(reservation)">
+                  otkazi
+                </button>
+                } @else {
+                <span class="text-muted">otkazivanje nije moguce</span>
+                }
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        } @else {
+        <div class="alert alert-info" role="alert">
+          <span>nema trenutnih rezervacija</span>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5>arhiva</h5>
+      </div>
+      <div class="card-body">
+        @if (archived.length > 0) {
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>pocetak</th>
+              <th>kraj</th>
+              <th>vikendica</th>
+              <th>komentar</th>
+              <th>ocena</th>
+              <th>akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (reservation of archived; track reservation) {
+            <tr>
+              <td>{{reservation.dateBeg | date:'dd.MM.yyyy. HH:mm'}}</td>
+              <td>{{reservation.dateEnd | date:'dd.MM.yyyy. HH:mm'}}</td>
+              <td>{{ reservation.propertyName }}</td>
+              <td>
+                @if (reservation.comment) {
+                {{ reservation.comment }}
+                } @else {
+                <span class="text-muted">nema komentara</span>
+                }
+              </td>
+              <td>
+                @if (reservation.rating > 0) {
+                  <div>
+                    <div class="stars-empty">
+                      <div class="stars-filled" [ngStyle]="{'width': (reservation.rating / 5 * 100) + '%'}"></div>
+                    </div>
+                  </div>
+                } @else {
+                <span class="text-muted">nema ocene</span>
+                }
+              </td>
+              <td>
+                @if (!reservation.rating) {
+                <button class="btn btn-primary btn-sm" (click)="rate(reservation)">
+                  oceni
+                </button>
+                }
+                @else {
+                <span class="text-success">ocenjeno</span>
+                }
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        } @else {
+        <div class="alert alert-info" role="alert">
+          <span>nema prethodnih rezervacija</span>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+
+@if (type === 'owner') {
+
+}

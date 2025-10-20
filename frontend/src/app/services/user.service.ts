@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs';
+import { Reservation } from '../models/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +78,23 @@ export class UserService {
     return this.http.post<string>(`${this.url}/changePassword`, data)
   }
 
-  
+  cancelReservation(reservation: Reservation) {
+    return this.http.post<string>(`${this.url}/cancelReservation`, reservation)
+  }
+
+  processReservation(reservation: Reservation) {
+    return this.http.post<string>(`${this.url}/processReservation`, reservation)
+  }
+
+  addRating(reservation: Reservation) {
+    return this.http.post<string>(`${this.url}/addRating`, reservation)
+  }
+
+  getReservationsOwner(owner: User) {
+    return this.http.post<Reservation[]>(`${this.url}/getReservationsOwner`, owner)
+  }
+
+  getReservationsTourist(renter: User) {
+    return this.http.post<Reservation[]>(`${this.url}/getReservationsTourist`, renter)
+  }
 }

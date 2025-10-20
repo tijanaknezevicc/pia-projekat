@@ -3,6 +3,7 @@ import { UserController } from '../controllers/user.controller'
 import { PropertyController } from '../controllers/property.controller'
 import multer from 'multer';
 import path from 'path';
+import user from '../models/user';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -34,6 +35,26 @@ userRouter.route('/updateUser').post(
 
 userRouter.route('/changePassword').post(
     (req, res) => new UserController().changePassword(req, res)
+)
+
+userRouter.route('/getReservationsOwner').post(
+    (req, res) => new UserController().getReservationsOwner(req, res)
+)
+
+userRouter.route('/getReservationsTourist').post(
+    (req, res) => new UserController().getReservationsTourist(req, res)
+)
+
+userRouter.route('/processReservation').post(
+    (req, res) => new UserController().processReservation(req, res)
+)
+
+userRouter.route('/cancelReservation').post(
+    (req, res) => new UserController().cancelReservation(req, res)
+)
+
+userRouter.route('/addRating').post(
+    (req, res) => new UserController().addRating(req, res)
 )
 
 export default userRouter
