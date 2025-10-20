@@ -87,6 +87,22 @@ export class UserService {
     return this.http.post<string>(`${this.url}/change-password`, data)
   }
 
+  getAllUsers() {
+    return this.http.get<User[]>(`${this.url}/get-users`)
+  }
+
+  approveUser(user: User) {
+    return this.http.post<string>(`${this.url}/approve-user`, user)
+  }
+
+  rejectUser(user: User) {
+    return this.http.post<string>(`${this.url}/reject-user`, user)
+  }
+
+  toggleActiveStatus(user: User) {
+    return this.http.post<string>(`${this.url}/change-active-status`, user)
+  }
+
   cancelReservation(reservation: Reservation) {
     return this.http.post<string>(`${this.url}/cancel-reservation`, reservation)
   }

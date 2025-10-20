@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: cadetblue;">
   <div class="container-fluid">
-    <a class="navbar-brand" [href]="type">Vikendice</a>
+    <a class="navbar-brand" *ngIf="type=='tourist' || type=='owner'" [href]="type">Vikendice</a>
+    <a class="navbar-brand" *ngIf="type=='admin'" href="admin-users">Vikendice</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
@@ -9,11 +10,13 @@
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isLogged" [href]="type">profil<span class="sr-only"></span></a>
+          <a class="nav-link" *ngIf="type=='tourist' || type=='owner'" [href]="type">profil<span class="sr-only"></span></a>
+          <a class="nav-link" *ngIf="type=='admin'" href="admin-users">pregled korisnika<span class="sr-only"></span></a>
         </li>
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" *ngIf="type=='tourist'" href="properties">vikendice</a>
           <a class="nav-link" *ngIf="type=='owner'" href="reservations">rezervacije</a>
+          <a class="nav-link" *ngIf="type=='admin'" href="admin-properties">pregled vikendica</a>
         </li>
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" *ngIf="type=='tourist'" href="reservations">rezervacije</a>
@@ -22,20 +25,16 @@
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" *ngIf="type=='owner'" href="stats">statistika</a>
         </li>
-
-        <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle>jos neke opcije</a>
-          <div ngbDropdownMenu>
-            <a ngbDropdownItem href="#">prva</a>
-            <a ngbDropdownItem href="#">druga</a>
-            <a ngbDropdownItem href="#">treca</a>
-          </div>
-        </li>
       </ul>
 
       <ul class="navbar-nav ms-auto">
 
         <ng-container *ngIf="isLogged">
+          <li class="nav-item me-2">
+            <span class="nav-link" *ngIf="type=='admin'">administrator</span>
+            <span class="nav-link" *ngIf="type=='tourist'">turista</span>
+            <span class="nav-link" *ngIf="type=='owner'">vlasnik</span>
+          </li>
           <li class="nav-item">
             <button class="btn btn-primary me-2" (click)="changePassword()">promeni lozinku</button>
           </li>
@@ -43,8 +42,6 @@
             <button class="btn btn-danger" (click)="logout()">odjavi se</button>
           </li>
         </ng-container>
-
-
 
         <ng-container *ngIf="!isLogged">
           <li class="nav-item">

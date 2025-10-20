@@ -62,6 +62,7 @@ export class ProfileComponent {
         localStorage.setItem('logged', JSON.stringify(data))
         this.user = data
         this.timestamp = Date.now()
+        alert('profil azuriran')
       },
       error: (err) => {
         if (err.status === 400) {
@@ -74,7 +75,7 @@ export class ProfileComponent {
           this.message = 'greska';
         }
       }
-    });
+    })
   }
 
   formatCardNumber(event: any) {

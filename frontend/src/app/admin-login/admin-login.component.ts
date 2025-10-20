@@ -26,7 +26,7 @@ export class AdminLoginComponent {
             localStorage.setItem("type", user.type)
             this.userService.setLogged(true)
             this.userService.setType(user.type)
-            this.router.navigate(['admin'])
+            this.router.navigate(['admin-users'])
             this.message = ""
         },
         error: (err) => {

@@ -157,7 +157,7 @@ export class UserController {
     approveUser = (req: express.Request, res: express.Response) => {
         let user = req.body
 
-        UserModel.updateOne({username: user.username}, {approved: true}).then(ok => {
+        UserModel.updateOne({username: user.username}, {approved: true, active: true}).then(ok => {
             res.status(200).json('korisnik odobren')
         }).catch(err => {
             console.log(err)

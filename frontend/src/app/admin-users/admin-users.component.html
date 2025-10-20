@@ -1,0 +1,140 @@
+<div class="container-fluid mt-4">
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5>novi korisnici</h5>
+    </div>
+    <div class="card-body">
+      @if (pending.length > 0) {
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>korisnicko ime</th>
+              <th>email</th>
+              <th>ime</th>
+              <th>prezime</th>
+              <th>tip</th>
+              <th colspan="2">akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of pending; track user.username) {
+            <tr>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.type === 'owner' ? 'vlasnik' : 'turista' }}</td>
+              <td>
+                <button class="btn btn-success btn-sm me-2" (click)="approveUser(user)">
+                  prihvati
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="rejectUser(user)">
+                  odbij
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      } @else {
+      <div class="alert alert-info">
+        nema novih korisnika
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>svi korisnici</h5>
+    </div>
+    <div class="card-body">
+      @if (approved.length > 0) {
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>korisnicko ime</th>
+              <th>slika</th>
+              <th>email</th>
+              <th>ime</th>
+              <th>prezime</th>
+              <th>tip</th>
+              <th>pol</th>
+              <th>telefon</th>
+              <th>kartica</th>
+              <th colspan="2">akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of approved; track user.username) {
+            <tr>
+              <td>{{user.username}}</td>
+              <td>
+                <div class="container-fluid mb-4 mt-4">
+                  <img [src]="backendUrl + user.pfp + '?t=' + timestamp" alt="profilna slika" class="img-fluid rounded"
+                    style="width: auto; height: 50px; object-fit: cover;">
+                  <div class="row">
+                    <input type="file" id="pfp" name="pfp" class="form-control mt-3" style="width: 200px" (change)="onFileSelect($event)">
+
+                    @if (user.pfp != "default.png") {
+                    <div class="mt-4">
+                      <button type="button" class="btn btn-secondary btn-sm" (click)="removePfp(user)">
+                        ukloni
+                      </button>
+                    </div>
+                    }
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input type="email" [(ngModel)]="user.email" class="form-control form-control-sm">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="user.firstName" class="form-control form-control-sm">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="user.lastName" class="form-control form-control-sm">
+              </td>
+              <td>
+                  {{ user.type === 'owner' ? 'vlasnik' : 'turista' }}
+              </td>
+              <td>
+                <select [(ngModel)]="user.gender" class="form-select form-select-sm">
+                  <option value="M">muski</option>
+                  <option value="F">zenski</option>
+                  <option value="O">drugo</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="user.phone" class="form-control form-control-sm">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="user.payment" class="form-control form-control-sm">
+              <td>
+                <button class="btn btn-success btn-sm me-1" (click)="updateUser(user)">azuriraj</button>
+              <td>
+                <button class="btn btn-secondary btn-sm"
+                  (click)="toggleActive(user)">
+                  {{ user.active ? 'deaktiviraj' : 'aktiviraj' }}
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      } @else {
+      <div class="alert alert-info">
+        nema registrovanih korisnika.
+      </div>
+      }
+    </div>
+  </div>
+</div>
+

@@ -145,7 +145,7 @@ class UserController {
         };
         this.approveUser = (req, res) => {
             let user = req.body;
-            user_1.default.updateOne({ username: user.username }, { approved: true }).then(ok => {
+            user_1.default.updateOne({ username: user.username }, { approved: true, active: true }).then(ok => {
                 res.status(200).json('korisnik odobren');
             }).catch(err => {
                 console.log(err);

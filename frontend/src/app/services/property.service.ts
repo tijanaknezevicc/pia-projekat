@@ -37,4 +37,8 @@ export class PropertyService {
   addReservation(reservation: Reservation) {
     return this.http.post(`${this.url}/add-reservation`, reservation);
   }
+
+  blockProperty(property: Property) {
+    return this.http.post(`${this.url}/block-property`, property);
+  }
 }
