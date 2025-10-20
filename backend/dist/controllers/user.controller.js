@@ -24,7 +24,30 @@ class UserController {
             try {
                 let username = req.body.username;
                 let password = req.body.password;
-                let user = yield user_1.default.findOne({ username: username, active: true });
+                let user = yield user_1.default.findOne({ username: username, active: true, type: { $in: ['owner', 'tourist'] } });
+                if (!user) {
+                    res.status(404).json(null);
+                }
+                else {
+                    let correct = yield bcryptjs_1.default.compare(password, user.password);
+                    if (!correct) {
+                        res.status(401).json('pogresna lozinka');
+                    }
+                    else {
+                        res.status(200).json(user);
+                    }
+                }
+            }
+            catch (err) {
+                console.log(err);
+                res.status(500).json('greska');
+            }
+        });
+        this.adminLogin = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let username = req.body.username;
+                let password = req.body.password;
+                let user = yield user_1.default.findOne({ username: username, active: true, type: 'admin' });
                 if (!user) {
                     res.status(404).json(null);
                 }
@@ -103,7 +126,7 @@ class UserController {
             }
         });
         this.getReservationsOwner = (req, res) => {
-            let username = req.body;
+            let username = req.body.username;
             reservation_1.default.find({ owner: username }).sort({ dateBeg: -1 })
                 .then(reservations => {
                 res.status(200).json(reservations);

@@ -12,7 +12,7 @@ export class UserController {
             let username = req.body.username
             let password = req.body.password
 
-            let user = await UserModel.findOne({username: username, active: true})
+            let user = await UserModel.findOne({username: username, active: true, type: {$in: ['owner', 'tourist']}})
 
             if (!user) {
                res.status(404).json(null)
@@ -31,7 +31,33 @@ export class UserController {
             console.log(err)
             res.status(500).json('greska')
         }
-    } 
+    }
+
+    adminLogin = async (req: express.Request, res: express.Response) => {
+        try {
+            let username = req.body.username
+            let password = req.body.password
+
+            let user = await UserModel.findOne({username: username, active: true, type: 'admin'})
+
+            if (!user) {
+               res.status(404).json(null)
+            }
+
+            else {
+                let correct = await bcrypt.compare(password, user.password)
+                if (!correct) {
+                    res.status(401).json('pogresna lozinka')
+                }
+                else {
+                    res.status(200).json(user)
+                }
+            }         
+        } catch (err) {
+            console.log(err)
+            res.status(500).json('greska')
+        }
+    }
 
     register = async (req: express.Request, res: express.Response) => {
         try {
@@ -108,7 +134,7 @@ export class UserController {
     }
 
     getReservationsOwner = (req: express.Request, res: express.Response) => {
-        let username = req.body
+        let username = req.body.username
 
         ReservationModel.find({owner: username}).sort({ dateBeg: -1 })
             .then(reservations => {

@@ -34,8 +34,8 @@ export class RegisterComponent {
 
       next: (data) => {
         this.message = ""
+        alert("vas nalog ceka na odobrenje administratora")
         this.router.navigate([""])
-        this.showModal()
       },
       error: (err) => {
         if (err.status === 400) {

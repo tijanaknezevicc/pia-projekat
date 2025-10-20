@@ -170,9 +170,9 @@
                       <label class="form-check-label" for="F">Z</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="other" value="other"
+                      <input class="form-check-input" type="radio" name="gender" id="O" value="O"
                         [(ngModel)]="user.gender" required>
-                      <label class="form-check-label" for="other">drugo</label>
+                      <label class="form-check-label" for="O">drugo</label>
                     </div>
                   </div>
 
@@ -322,22 +322,3 @@
     </div>
   </div>
 </section>
-
-<div class="modal fade" id="registerAlert" tabindex="-1" aria-labelledby="registerAlertLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header text-white" style="background-color: cadetblue;">
-        <h5 class="modal-title" id="registerAlertLabel">registracija uspesna</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
-      </div>
-      <div class="modal-body">
-        vas nalog ceka na odobrenje administratora
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="continue()">
-          u redu
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

@@ -46,6 +46,15 @@ export class UserService {
     return this.http.post<User>(`${this.url}/login`, data)
   }
 
+  adminLogin(u: string, p: string) {
+    const data = {
+      username: u,
+      password: p
+    }
+
+    return this.http.post<User>(`${this.url}/admin-login`, data)
+  }
+
   register(user: User, file?: File | null) {
     const formData = new FormData();
     formData.append('user', JSON.stringify(user))
@@ -65,7 +74,7 @@ export class UserService {
       formData.append('pfp', file);
     }
 
-    return this.http.post<User>(`${this.url}/updateUser`, formData)
+    return this.http.post<User>(`${this.url}/update-user`, formData)
   }
 
   changePassword(username: string, oldPassword: string, newPassword: string) {
@@ -75,26 +84,26 @@ export class UserService {
       newPassword: newPassword
     }
 
-    return this.http.post<string>(`${this.url}/changePassword`, data)
+    return this.http.post<string>(`${this.url}/change-password`, data)
   }
 
   cancelReservation(reservation: Reservation) {
-    return this.http.post<string>(`${this.url}/cancelReservation`, reservation)
+    return this.http.post<string>(`${this.url}/cancel-reservation`, reservation)
   }
 
   processReservation(reservation: Reservation) {
-    return this.http.post<string>(`${this.url}/processReservation`, reservation)
+    return this.http.post<string>(`${this.url}/process-reservation`, reservation)
   }
 
   addRating(reservation: Reservation) {
-    return this.http.post<string>(`${this.url}/addRating`, reservation)
+    return this.http.post<string>(`${this.url}/add-rating`, reservation)
   }
 
   getReservationsOwner(owner: User) {
-    return this.http.post<Reservation[]>(`${this.url}/getReservationsOwner`, owner)
+    return this.http.post<Reservation[]>(`${this.url}/get-reservations-owner`, owner)
   }
 
   getReservationsTourist(renter: User) {
-    return this.http.post<Reservation[]>(`${this.url}/getReservationsTourist`, renter)
+    return this.http.post<Reservation[]>(`${this.url}/get-reservations-tourist`, renter)
   }
 }

@@ -4,11 +4,12 @@ import { User } from '../models/user';
 import { Reservation } from '../models/reservation';
 import { CommonModule, DatePipe, DecimalPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reservations',
   standalone: true,
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, FormsModule],
   templateUrl: './reservations.component.html',
   styleUrl: './reservations.component.css'
 })
@@ -44,6 +45,23 @@ export class ReservationsComponent implements OnInit {
           this.current = this.all.filter(r => new Date(r.dateEnd) >= now)
         })
       }
+  }
+
+  approve(reservation: Reservation) {
+    reservation.approved = true
+    reservation.rejectionReason = ""
+    this.userService.processReservation(reservation).subscribe(ok => {
+      alert("odobrena rezervacija")
+      this.ngOnInit()
+    })
+  }
+
+  reject(reservation: Reservation) {
+    reservation.approved = false
+    this.userService.processReservation(reservation).subscribe(ok => {
+      alert("odbijena rezervacija")
+      this.ngOnInit()
+    })
   }
 
   canCancel(reservation: Reservation): boolean {

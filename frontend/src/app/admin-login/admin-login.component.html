@@ -1,1 +1,48 @@
-<p>admin-login works!</p>
+<div class="text-center pt-5 row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 form-signin">
+    <img class="mb-4" src="assets/ferg.gif" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">administrator!</h1>
+
+    @if (message != '') {
+    <span style="color: red">{{message}}</span>
+    <br>
+    }
+
+    <div class="form-outline form-floating mb-3">
+      <input type="text" id="username" name="username" placeholder="korisnicko ime" class="form-control form-control-lg"
+        [(ngModel)]="username" #usernameCtrl="ngModel" required>
+
+      <label class="form-label" for="username">
+        korisnicko ime
+      </label>
+
+      @if (usernameCtrl.invalid && usernameCtrl.touched) {
+      <div class="alert alert-danger">
+        unesite korisnicko ime
+      </div>
+      }
+
+    </div>
+    <div class="form-outline form-floating mb-3">
+      <input type="password" id="password" name="password" placeholder="lozinka" class="form-control form-control-lg"
+        [(ngModel)]="password" #passwordCtrl="ngModel" required>
+
+      <label class="form-label" for="password">
+        lozinka
+      </label>
+
+      @if (passwordCtrl.invalid && passwordCtrl.touched) {
+      <div class="alert alert-danger">
+        unesite lozinku
+      </div>
+      }
+    </div>
+
+    <button class="btn btn-md btn-primary btn-block" [disabled]="usernameCtrl.invalid || passwordCtrl.invalid"
+      (click)="login()">
+      prijavi se
+    </button>
+  </div>
+  <div class="col-md-4"></div>
+</div>
