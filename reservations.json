@@ -1,16 +1,1148 @@
-[
-    {
-        "dateBeg": "2023-06-01T14:00",
-        "dateEnd": "2023-06-10T02:30",
-        "propertyName": "Linden Forest House",
-        "propertyLocation": "Lipovica",
-        "owner": "pera1",
-        "renter": "jana",
-        "requests": "",
-        "approved": false,
-        "pending": true,
-        "rating": 0,
-        "comment": "",
-        "rejectionReason": ""
-     }
-]
+[{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7a"
+  },
+  "dateBeg": {
+    "$date": "2026-05-17T19:09:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2026-05-27T08:21:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-04-14T03:38:45.786Z"
+  },
+  "propertyName": "Snow Haven",
+  "propertyLocation": "Kopaonik",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 3,
+    "children": 1
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7b"
+  },
+  "dateBeg": {
+    "$date": "2035-07-14T21:13:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2035-07-22T10:51:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-02-12T03:38:45.245Z"
+  },
+  "propertyName": "Wolf Creek Cottage",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "ana",
+  "guests": {
+    "adults": 2,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7c"
+  },
+  "dateBeg": {
+    "$date": "2030-11-30T17:16:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2030-12-06T06:08:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-08-18T03:38:45.471Z"
+  },
+  "propertyName": "Stonewood Chalet",
+  "propertyLocation": "Jahorina",
+  "owner": "tijana",
+  "renter": "jana1",
+  "guests": {
+    "adults": 4,
+    "children": 2
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7d"
+  },
+  "dateBeg": {
+    "$date": "2028-09-23T15:26:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2028-09-27T08:50:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-10-13T03:38:45.936Z"
+  },
+  "propertyName": "Wolf Creek Cottage",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "tamara",
+  "guests": {
+    "adults": 2,
+    "children": 2
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7e"
+  },
+  "dateBeg": {
+    "$date": "2032-03-13T22:27:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2032-03-21T05:22:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-09-05T03:38:45.421Z"
+  },
+  "propertyName": "Pine Valley Cabin",
+  "propertyLocation": "Golija",
+  "owner": "tijana",
+  "renter": "jana1",
+  "guests": {
+    "adults": 4,
+    "children": 0
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a7f"
+  },
+  "dateBeg": {
+    "$date": "2034-08-25T14:16:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2034-09-03T09:50:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-08-20T03:38:45.389Z"
+  },
+  "propertyName": "Mountain Escape",
+  "propertyLocation": "Rudnik",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 3,
+    "children": 2
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a80"
+  },
+  "dateBeg": {
+    "$date": "2031-05-23T16:09:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2031-05-30T05:49:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-06-15T03:38:45.592Z"
+  },
+  "propertyName": "Frosty Peak Lodge",
+  "propertyLocation": "Tara",
+  "owner": "tamara",
+  "renter": "tijana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a81"
+  },
+  "dateBeg": {
+    "$date": "2034-05-23T17:52:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2034-06-02T07:32:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-06-05T03:38:45.820Z"
+  },
+  "propertyName": "White Ridge Cabin",
+  "propertyLocation": "Jahorina",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 3,
+    "children": 2
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a82"
+  },
+  "dateBeg": {
+    "$date": "2027-10-19T18:10:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2027-10-26T10:38:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-10-09T03:38:45.078Z"
+  },
+  "propertyName": "Highland View",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "tijana",
+  "guests": {
+    "adults": 3,
+    "children": 1
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a83"
+  },
+  "dateBeg": {
+    "$date": "2032-03-22T22:36:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2032-04-01T10:17:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-12-16T03:38:45.744Z"
+  },
+  "propertyName": "Evergreen Escape",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "jana1",
+  "guests": {
+    "adults": 2,
+    "children": 2
+  },
+  "requests": "",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a84"
+  },
+  "dateBeg": {
+    "$date": "2028-11-22T16:46:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2028-12-01T10:35:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-04-18T03:38:45.093Z"
+  },
+  "propertyName": "Wolf Creek Cottage",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "tijana",
+  "guests": {
+    "adults": 4,
+    "children": 2
+  },
+  "requests": "",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a85"
+  },
+  "dateBeg": {
+    "$date": "2026-09-24T15:06:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2026-10-04T08:48:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-07-26T03:38:45.927Z"
+  },
+  "propertyName": "Eagle's Nest",
+  "propertyLocation": "Prokletije",
+  "owner": "pera1",
+  "renter": "zika",
+  "guests": {
+    "adults": 2,
+    "children": 1
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a86"
+  },
+  "dateBeg": {
+    "$date": "2032-12-29T22:31:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2033-01-01T07:09:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-07-09T03:38:45.961Z"
+  },
+  "propertyName": "Kosmaj Resort",
+  "propertyLocation": "Kosmaj",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a87"
+  },
+  "dateBeg": {
+    "$date": "2033-11-11T14:59:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2033-11-18T09:27:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-05-18T03:38:45.542Z"
+  },
+  "propertyName": "Frosty Peak Lodge",
+  "propertyLocation": "Tara",
+  "owner": "tamara",
+  "renter": "ana",
+  "guests": {
+    "adults": 1,
+    "children": 1
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a88"
+  },
+  "dateBeg": {
+    "$date": "2034-01-23T16:12:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2034-01-27T10:13:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-08-10T03:38:45.940Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "tijana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a89"
+  },
+  "dateBeg": {
+    "$date": "2030-04-25T15:52:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2030-05-02T09:49:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-03-30T03:38:45.226Z"
+  },
+  "propertyName": "Snow Haven",
+  "propertyLocation": "Kopaonik",
+  "owner": "pera1",
+  "renter": "pera1",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8a"
+  },
+  "dateBeg": {
+    "$date": "2035-05-30T21:45:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2035-06-08T10:47:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-10-11T03:38:45.986Z"
+  },
+  "propertyName": "Mountain Escape",
+  "propertyLocation": "Rudnik",
+  "owner": "pera1",
+  "renter": "tijana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8b"
+  },
+  "dateBeg": {
+    "$date": "2033-07-09T16:44:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2033-07-16T10:55:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-10-30T03:38:45.088Z"
+  },
+  "propertyName": "Stonewood Chalet",
+  "propertyLocation": "Jahorina",
+  "owner": "tijana",
+  "renter": "ana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8c"
+  },
+  "dateBeg": {
+    "$date": "2031-04-06T15:55:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2031-04-12T10:07:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-09-27T03:38:45.329Z"
+  },
+  "propertyName": "Snow Haven",
+  "propertyLocation": "Kopaonik",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 3,
+    "children": 2
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8d"
+  },
+  "dateBeg": {
+    "$date": "2028-10-29T19:12:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2028-10-31T06:16:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-08-10T03:38:45.225Z"
+  },
+  "propertyName": "Eagle's Nest",
+  "propertyLocation": "Prokletije",
+  "owner": "pera1",
+  "renter": "tamara",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8e"
+  },
+  "dateBeg": {
+    "$date": "2026-07-17T22:48:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2026-07-19T06:22:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-12-21T03:38:45.748Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "jana1",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a8f"
+  },
+  "dateBeg": {
+    "$date": "2032-05-05T20:55:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2032-05-15T08:56:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-10-07T03:38:45.791Z"
+  },
+  "propertyName": "Mountain Escape",
+  "propertyLocation": "Rudnik",
+  "owner": "pera1",
+  "renter": "pera1",
+  "guests": {
+    "adults": 1,
+    "children": 1
+  },
+  "requests": "",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a90"
+  },
+  "dateBeg": {
+    "$date": "2032-12-25T20:33:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2032-12-31T05:34:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-07-01T03:38:45.440Z"
+  },
+  "propertyName": "Highland View",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "zika",
+  "guests": {
+    "adults": 4,
+    "children": 0
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a91"
+  },
+  "dateBeg": {
+    "$date": "2028-06-03T16:12:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2028-06-12T07:10:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-11-01T03:38:45.106Z"
+  },
+  "propertyName": "Pine Valley Cabin",
+  "propertyLocation": "Golija",
+  "owner": "tijana",
+  "renter": "pera1",
+  "guests": {
+    "adults": 4,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a92"
+  },
+  "dateBeg": {
+    "$date": "2027-01-24T21:52:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2027-02-02T08:19:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-08-07T03:38:45.556Z"
+  },
+  "propertyName": "Eagle's Nest",
+  "propertyLocation": "Prokletije",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 1,
+    "children": 1
+  },
+  "requests": "Topli peskiri",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a93"
+  },
+  "dateBeg": {
+    "$date": "2032-03-23T21:43:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2032-03-29T05:49:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-07-12T03:38:45.180Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "pera1",
+  "guests": {
+    "adults": 2,
+    "children": 0
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a94"
+  },
+  "dateBeg": {
+    "$date": "2025-11-24T21:32:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2025-11-26T06:02:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-03-02T03:38:45.370Z"
+  },
+  "propertyName": "Kosmaj Resort",
+  "propertyLocation": "Kosmaj",
+  "owner": "pera1",
+  "renter": "tijana",
+  "guests": {
+    "adults": 3,
+    "children": 1
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a95"
+  },
+  "dateBeg": {
+    "$date": "2025-08-29T17:58:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2025-09-02T10:24:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-08-05T03:38:45.725Z"
+  },
+  "propertyName": "Stonewood Chalet",
+  "propertyLocation": "Jahorina",
+  "owner": "tijana",
+  "renter": "tijana",
+  "guests": {
+    "adults": 4,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a96"
+  },
+  "dateBeg": {
+    "$date": "2025-09-07T16:28:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2025-09-13T05:33:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-11-01T03:38:45.463Z"
+  },
+  "propertyName": "Highland View",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "jana1",
+  "guests": {
+    "adults": 4,
+    "children": 2
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a97"
+  },
+  "dateBeg": {
+    "$date": "2026-12-08T20:12:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2026-12-11T07:49:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-11-28T03:38:45.248Z"
+  },
+  "propertyName": "Evergreen Escape",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "tijana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a98"
+  },
+  "dateBeg": {
+    "$date": "2026-01-09T16:57:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2026-01-14T06:10:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-03-10T03:38:45.612Z"
+  },
+  "propertyName": "Pine Valley Cabin",
+  "propertyLocation": "Golija",
+  "owner": "tijana",
+  "renter": "jana1",
+  "guests": {
+    "adults": 2,
+    "children": 2
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a99"
+  },
+  "dateBeg": {
+    "$date": "2025-08-21T17:13:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2025-08-23T06:30:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-06-11T03:38:45.405Z"
+  },
+  "propertyName": "Mountain Escape",
+  "propertyLocation": "Rudnik",
+  "owner": "pera1",
+  "renter": "ana",
+  "guests": {
+    "adults": 1,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9a"
+  },
+  "dateBeg": {
+    "$date": "2033-12-29T18:42:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2034-01-04T05:03:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-05-26T03:38:45.114Z"
+  },
+  "propertyName": "Wolf Creek Cottage",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "tamara",
+  "guests": {
+    "adults": 3,
+    "children": 0
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9b"
+  },
+  "dateBeg": {
+    "$date": "2028-03-23T15:22:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2028-03-30T07:43:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-07-11T03:38:45.574Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "tijana",
+  "guests": {
+    "adults": 2,
+    "children": 1
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9c"
+  },
+  "dateBeg": {
+    "$date": "2031-03-04T18:06:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2031-03-06T06:28:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-08-09T03:38:45.951Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "jana1",
+  "guests": {
+    "adults": 2,
+    "children": 1
+  },
+  "requests": "Kasni check-out ako može",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9d"
+  },
+  "dateBeg": {
+    "$date": "2033-04-07T16:25:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2033-04-12T09:48:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-03-11T03:38:45.970Z"
+  },
+  "propertyName": "Frosty Peak Lodge",
+  "propertyLocation": "Tara",
+  "owner": "tamara",
+  "renter": "zika",
+  "guests": {
+    "adults": 2,
+    "children": 2
+  },
+  "requests": "",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9e"
+  },
+  "dateBeg": {
+    "$date": "2034-03-17T19:29:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2034-03-24T05:27:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-11-28T03:38:45.553Z"
+  },
+  "propertyName": "Wolf Creek Cottage",
+  "propertyLocation": "Divčibare",
+  "owner": "tijana",
+  "renter": "tijana",
+  "guests": {
+    "adults": 2,
+    "children": 0
+  },
+  "requests": "Topli peskiri",
+  "approved": false,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": "sama sebi ne moze"
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5a9f"
+  },
+  "dateBeg": {
+    "$date": "2027-09-10T17:32:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2027-09-19T07:18:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-02-23T03:38:45.128Z"
+  },
+  "propertyName": "Silent Hill Lodge",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "jana1",
+  "guests": {
+    "adults": 1,
+    "children": 1
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5aa0"
+  },
+  "dateBeg": {
+    "$date": "2033-06-05T20:18:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2033-06-14T09:23:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-09-16T03:38:45.705Z"
+  },
+  "propertyName": "Kosmaj Resort",
+  "propertyLocation": "Kosmaj",
+  "owner": "pera1",
+  "renter": "tamara",
+  "guests": {
+    "adults": 3,
+    "children": 1
+  },
+  "requests": "Molim vas blizu staze",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f700e33593d8218c3f5aa1"
+  },
+  "dateBeg": {
+    "$date": "2029-07-16T21:58:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2029-07-19T10:58:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2024-12-24T03:38:45.919Z"
+  },
+  "propertyName": "Evergreen Escape",
+  "propertyLocation": "Kopaonik",
+  "owner": "tamara",
+  "renter": "pera1",
+  "guests": {
+    "adults": 1,
+    "children": 2
+  },
+  "requests": "Topli peskiri",
+  "approved": true,
+  "pending": false,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+},
+{
+  "_id": {
+    "$oid": "68f70178da1bc1334910f849"
+  },
+  "dateBeg": {
+    "$date": "2025-10-28T13:00:00.000Z"
+  },
+  "dateEnd": {
+    "$date": "2025-10-31T06:00:00.000Z"
+  },
+  "dateReserved": {
+    "$date": "2025-10-21T03:43:52.837Z"
+  },
+  "propertyName": "Eagle's Nest",
+  "propertyLocation": "Prokletije",
+  "owner": "pera1",
+  "renter": "jana1",
+  "guests": {
+    "adults": 2,
+    "children": 0
+  },
+  "requests": "",
+  "approved": false,
+  "pending": true,
+  "rating": 0,
+  "comment": "",
+  "rejectionReason": ""
+}]

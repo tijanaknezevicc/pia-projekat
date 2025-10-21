@@ -1,0 +1,13 @@
+front: (--legacy-peer-deps)
+
+npm install @ng-bootstrap/ng-bootstrap@^17.0.0
+npm install bootstrap@^5.3.8
+npm install chart.js@^4.5.1
+npm install leaflet@^1.9.4
+npm install @types/leaflet@^1.9.21
+npm install flatpickr@^4.6.13
+
+back:
+
+npm install bcryptjs
+npm install multer

@@ -1,79 +1,568 @@
-[
+[{
+  "_id": {
+    "$oid": "68f2644a0a0989a3c823f601"
+  },
+  "name": "Mountain Retreat",
+  "location": "Zlatibor",
+  "owner": "tijana",
+  "images": [
+    "slika3.jpg",
+    "slika4.jpg"
+  ],
+  "services": "Bazen, Spa, Doručak",
+  "pricing": {
+    "summer": 150,
+    "winter": 180
+  },
+  "phone": "0698765432",
+  "comments": [
     {
-        "name": "Linden Forest House",
-        "location": "Lipovica",
-        "owner": "pera1",
-        "dateBlocked": "",
-        "images": ["slika1.jpg", "slika2.jpg"],
-        "services": "WiFi, Parking, Kamin",
-        "pricing": {
-            "summer": 100,
-            "winter": 120
-        },
-        "phone": "0612345678",
-        "comments": [
-            {
-                "user": "Jana",
-                "text": "Predivno mesto za odmor!"
-            },
-            {
-                "user": "Tijana",
-                "text": "Uživali smo"
-            }
-        ],
-        "ratings": [5, 4, 5, 5],
-        "coordinates": {
-            "x": 44.62665284514708,
-            "y": 20.42329991738214
-        }
+      "user": "Marko",
+      "text": "Fantastičan pogled na planinu!",
+      "rating": 5
     },
     {
-        "name": "Mountain Retreat",
-        "location": "Zlatibor",
-        "owner": "tijana",
-        "dateBlocked": "",
-        "images": ["slika3.jpg", "slika4.jpg"],
-        "services": "Bazen, Spa, Doručak",
-        "pricing": {
-            "summer": 150,
-            "winter": 180
-        },
-        "phone": "0698765432",
-        "comments": [
-            {
-                "user": "Marko",
-                "text": "Fantastičan pogled na planinu!"
-            }
-        ],
-        "ratings": [5, 5, 4],
-        "coordinates": {
-            "x": 43.724785,
-            "y": 19.699024
-        }
-    },
-    {
-        "name": "Seaside Villa",
-        "location": "Sutomore",
-        "owner": "tamara",
-        "dateBlocked": "",
-        "images": ["slika5.jpg", "slika6.jpg"],
-        "services": "Plaža, Bar, Sportski tereni",
-        "pricing": {
-            "summer": 200,
-            "winter": 220
-        },
-        "phone": "0671234567",
-        "comments": [
-            {
-                "user": "Ana",
-                "text": "Savršen za letnji odmor!"
-            }
-        ],
-        "ratings": [4, 5, 5, 4],
-        "coordinates": {
-            "x": 42.289717,
-            "y": 19.097202
-        }
+      "user": "ivana",
+      "rating": 2,
+      "text": ""
     }
-
-]
+  ],
+  "coordinates": {
+    "x": 43.724785,
+    "y": 19.699024
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6d5261fe1839cd2bec915"
+  },
+  "name": "Kosmaj Resort",
+  "location": "Kosmaj",
+  "owner": "pera1",
+  "dateBlocked": null,
+  "images": [
+    "slika1.jpg",
+    "slika8.jpg"
+  ],
+  "services": "Masaza, masaza",
+  "pricing": {
+    "summer": 30,
+    "winter": 100
+  },
+  "phone": "069420420",
+  "coordinates": {
+    "x": 44.47203131585199,
+    "y": 20.569346926583165
+  },
+  "comments": []
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a6b"
+  },
+  "name": "Eagle's Nest",
+  "location": "Prokletije",
+  "owner": "pera1",
+  "images": [
+    "slika3.jpg",
+    "slika6.jpg"
+  ],
+  "services": "Dečje igralište, Kamin, Soba za igre",
+  "pricing": {
+    "winter": 210,
+    "summer": 176
+  },
+  "phone": "0694639948",
+  "comments": [
+    {
+      "user": "Jana",
+      "text": "Sve preporuke, vlasnik veoma ljubazan.",
+      "rating": 2
+    },
+    {
+      "user": "Ana",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 5
+    },
+    {
+      "user": "Milica",
+      "text": "Idealno za zimske praznike!",
+      "rating": 4
+    },
+    {
+      "user": "Ana",
+      "text": "Odlično grejanje i prijatna atmosfera.",
+      "rating": 5
+    }
+  ],
+  "coordinates": {
+    "x": 43.384255,
+    "y": 19.821933
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a6c"
+  },
+  "name": "Stonewood Chalet",
+  "location": "Jahorina",
+  "owner": "tijana",
+  "images": [
+    "slika9.jpg",
+    "slika3.jpg",
+    "slika4.jpg"
+  ],
+  "services": "Wellness centar, Sauna, Masaža",
+  "pricing": {
+    "winter": 217,
+    "summer": 178
+  },
+  "phone": "0697870857",
+  "comments": [
+    {
+      "user": "Ana",
+      "text": "Kamin je fantastičan!",
+      "rating": 5
+    },
+    {
+      "user": "Luka",
+      "text": "Sve preporuke, vlasnik veoma ljubazan.",
+      "rating": 4
+    },
+    {
+      "user": "Jovana",
+      "text": "",
+      "rating": 1
+    },
+    {
+      "user": "Milica",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 5
+    },
+    {
+      "user": "Luka",
+      "text": "Prelep pogled na planine.",
+      "rating": 2
+    },
+    {
+      "user": "Marko",
+      "text": "",
+      "rating": 3
+    }
+  ],
+  "coordinates": {
+    "x": 44.096115,
+    "y": 18.875609
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a6d"
+  },
+  "name": "Pine Valley Cabin",
+  "location": "Golija",
+  "owner": "tijana",
+  "images": [
+    "slika2.jpg",
+    "slika6.jpg"
+  ],
+  "services": "Kamin, Pogled na planinu, Besplatan doručak",
+  "pricing": {
+    "winter": 182,
+    "summer": 153
+  },
+  "phone": "0694464618",
+  "comments": [
+    {
+      "user": "Vanja",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 5
+    },
+    {
+      "user": "Vanja",
+      "text": "Idealno za zimske praznike!",
+      "rating": 2
+    },
+    {
+      "user": "Luka",
+      "text": "Sve preporuke, vlasnik veoma ljubazan.",
+      "rating": 2
+    },
+    {
+      "user": "Petar",
+      "text": "Pomalo izolovano, ali vredno posete.",
+      "rating": 3
+    }
+  ],
+  "coordinates": {
+    "x": 43.177175,
+    "y": 19.700425
+  },
+  "dateBlocked": {
+    "$date": "2024-12-16T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a6e"
+  },
+  "name": "Silent Hill Lodge",
+  "location": "Kopaonik",
+  "owner": "tamara",
+  "images": [
+    "slika9.jpg",
+    "slika5.jpg"
+  ],
+  "services": "Sauna, Kamin, Parking",
+  "pricing": {
+    "winter": 128,
+    "summer": 163
+  },
+  "phone": "0698431113",
+  "comments": [
+    {
+      "user": "Luka",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 1
+    },
+    {
+      "user": "Milica",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 4
+    },
+    {
+      "user": "Jana",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 4
+    },
+    {
+      "user": "Ana",
+      "text": "Vikendica iz snova!",
+      "rating": 5
+    },
+    {
+      "user": "Danilo",
+      "text": "Kamin je fantastičan!",
+      "rating": 2
+    },
+    {
+      "user": "Vanja",
+      "text": "Vikendica iz snova!",
+      "rating": 5
+    }
+  ],
+  "coordinates": {
+    "x": 43.080831,
+    "y": 20.262035
+  },
+  "dateBlocked": {
+    "$date": "2022-04-16T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a6f"
+  },
+  "name": "White Ridge Cabin",
+  "location": "Jahorina",
+  "owner": "pera1",
+  "images": [
+    "slika5.jpg",
+    "slika2.jpg"
+  ],
+  "services": "Dečje igralište, Kamin, Soba za igre",
+  "pricing": {
+    "winter": 260,
+    "summer": 88
+  },
+  "phone": "0698356359",
+  "comments": [
+    {
+      "user": "Ana",
+      "text": "Kamin je fantastičan!",
+      "rating": 3
+    },
+    {
+      "user": "Luka",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 2
+    },
+    {
+      "user": "Milica",
+      "text": "Idealno za zimske praznike!",
+      "rating": 3
+    },
+    {
+      "user": "Jovana",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 4
+    },
+    {
+      "user": "Luka",
+      "text": "Pomalo izolovano, ali vredno posete.",
+      "rating": 4
+    },
+    {
+      "user": "Danilo",
+      "text": "Vikendica iz snova!",
+      "rating": 5
+    }
+  ],
+  "coordinates": {
+    "x": 43.440044,
+    "y": 19.631142
+  },
+  "dateBlocked": {
+    "$date": "2025-04-04T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a70"
+  },
+  "name": "Evergreen Escape",
+  "location": "Kopaonik",
+  "owner": "tamara",
+  "images": [
+    "slika8.jpg",
+    "slika1.jpg"
+  ],
+  "services": "Teretana, Bar, Jacuzzi",
+  "pricing": {
+    "winter": 169,
+    "summer": 170
+  },
+  "phone": "0694017270",
+  "comments": [
+    {
+      "user": "Ana",
+      "text": "Odlično grejanje i prijatna atmosfera.",
+      "rating": 5
+    },
+    {
+      "user": "Jovana",
+      "text": "Odlično grejanje i prijatna atmosfera.",
+      "rating": 5
+    },
+    {
+      "user": "Jana",
+      "text": "",
+      "rating": 1
+    },
+    {
+      "user": "Marko",
+      "text": "Odlično grejanje i prijatna atmosfera.",
+      "rating": 4
+    },
+    {
+      "user": "Luka",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 4
+    }
+  ],
+  "coordinates": {
+    "x": 44.468654,
+    "y": 19.095499
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a71"
+  },
+  "name": "Highland View",
+  "location": "Divčibare",
+  "owner": "tijana",
+  "images": [
+    "slika4.jpg",
+    "slika7.jpg"
+  ],
+  "services": "WiFi, Restoran, Skijašnica",
+  "pricing": {
+    "winter": 251,
+    "summer": 132
+  },
+  "phone": "0695804425",
+  "comments": [
+    {
+      "user": "Marko",
+      "text": "Vikendica iz snova!",
+      "rating": 4
+    },
+    {
+      "user": "Milica",
+      "text": "Savršeno mesto za odmor u prirodi!",
+      "rating": 3
+    },
+    {
+      "user": "Petar",
+      "text": "Vikendica iz snova!",
+      "rating": 4
+    }
+  ],
+  "coordinates": {
+    "x": 44.005104,
+    "y": 20.039384
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a72"
+  },
+  "name": "Snow Haven",
+  "location": "Kopaonik",
+  "owner": "pera1",
+  "images": [
+    "slika7.jpg",
+    "slika10.jpg"
+  ],
+  "services": "Kamin, Pogled na planinu, Besplatan doručak",
+  "pricing": {
+    "winter": 230,
+    "summer": 157
+  },
+  "phone": "0692827702",
+  "comments": [
+    {
+      "user": "Ana",
+      "text": "Kamin je fantastičan!",
+      "rating": 2
+    },
+    {
+      "user": "Danilo",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 2
+    },
+    {
+      "user": "Luka",
+      "text": "",
+      "rating": 1
+    },
+    {
+      "user": "Milica",
+      "text": "",
+      "rating": 1
+    },
+    {
+      "user": "Milica",
+      "text": "",
+      "rating": 1
+    }
+  ],
+  "coordinates": {
+    "x": 43.372552,
+    "y": 20.344979
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a73"
+  },
+  "name": "Wolf Creek Cottage",
+  "location": "Divčibare",
+  "owner": "tijana",
+  "images": [
+    "slika2.jpg",
+    "slika8.jpg"
+  ],
+  "services": "Teretana, Bar, Jacuzzi",
+  "pricing": {
+    "winter": 241,
+    "summer": 102
+  },
+  "phone": "0698758327",
+  "comments": [
+    {
+      "user": "Jana",
+      "text": "Sve preporuke, vlasnik veoma ljubazan.",
+      "rating": 5
+    },
+    {
+      "user": "Ana",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 3
+    },
+    {
+      "user": "Danilo",
+      "text": "Vikendica iz snova!",
+      "rating": 4
+    }
+  ],
+  "coordinates": {
+    "x": 43.107208,
+    "y": 19.59845
+  },
+  "dateBlocked": {
+    "$date": "2025-10-20T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a75"
+  },
+  "name": "Frosty Peak Lodge",
+  "location": "Tara",
+  "owner": "tamara",
+  "images": [
+    "slika1.jpg",
+    "slika9.jpg"
+  ],
+  "services": "Kamin, Pogled na planinu, Besplatan doručak",
+  "pricing": {
+    "winter": 166,
+    "summer": 170
+  },
+  "phone": "0696056861",
+  "comments": [],
+  "coordinates": {
+    "x": 43.721107,
+    "y": 20.181428
+  },
+  "dateBlocked": ""
+},
+{
+  "_id": {
+    "$oid": "68f6fd0b3593d8218c3f5a79"
+  },
+  "name": "Mountain Escape",
+  "location": "Rudnik",
+  "owner": "pera1",
+  "images": [
+    "slika6.jpg",
+    "slika4.jpg",
+    "slika9.jpg"
+  ],
+  "services": "Parking, Rent-a-ski, Bar",
+  "pricing": {
+    "winter": 244,
+    "summer": 134
+  },
+  "phone": "0699347215",
+  "comments": [
+    {
+      "user": "Danilo",
+      "rating": 3
+    },
+    {
+      "user": "Petar",
+      "text": "Toplo, udobno i mirno.",
+      "rating": 4
+    },
+    {
+      "user": "Petar",
+      "rating": 1
+    }
+  ],
+  "coordinates": {
+    "x": 43.393045,
+    "y": 20.694875
+  },
+  "dateBlocked": {
+    "$date": "2026-04-10T00:00:00.000Z"
+  }
+}]

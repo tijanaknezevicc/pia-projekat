@@ -1,0 +1,162 @@
+[{
+  "_id": {
+    "$oid": "68ee87046a7549b665e77b8d"
+  },
+  "username": "tijana",
+  "password": "$2b$10$pMOno644XtPQIqfNm8Brqu68yJ2o5ThFF7.A2W06jw8JlBRO93Drm",
+  "type": "owner",
+  "firstName": "Tijana",
+  "lastName": "knezevic",
+  "email": "tijana1@gmail.com",
+  "gender": "F",
+  "address": "adresa adresa 1",
+  "phone": "066666666",
+  "payment": "5252 5252 5252 5252",
+  "pfp": "default.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68ee92376a7549b665e77ba4"
+  },
+  "username": "pera1",
+  "password": "$2b$10$Vei4I.s5OuVXUEd1xM/kKeoWSut.Yq5Qbl4fcNrvHQEDoNwKx19kK",
+  "type": "owner",
+  "firstName": "Pera",
+  "lastName": "Peric",
+  "email": "pera1@gmail.com",
+  "gender": "O",
+  "address": "bulevar Pere",
+  "phone": "066666666",
+  "payment": "5202 0202 2020 2020",
+  "pfp": "pera1.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68ee95ad6a7549b665e77ba7"
+  },
+  "username": "jana1",
+  "password": "$2b$10$AAzAkiZhi0Bmt6P9Jo.G.eX3EX/Ztn4896OuRhN4.mYRJRwd0T7hi",
+  "type": "tourist",
+  "firstName": "Jana",
+  "lastName": "Janicic",
+  "email": "jana@gmail.com",
+  "gender": "F",
+  "address": "preselila sam se",
+  "phone": "061111112",
+  "payment": "4539 4538 4753 9457",
+  "pfp": "default.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68ee96936a7549b665e77bac"
+  },
+  "username": "zika",
+  "password": "$2b$10$7S57kuhSLqdFajXhdxedHeLZO0bc2xiFMn7/CjBXF0b2Ez10oyffy",
+  "type": "tourist",
+  "firstName": "Zika",
+  "lastName": "Zikic",
+  "email": "zika@gmail.com",
+  "gender": "M",
+  "address": "Ova muda",
+  "phone": "062222222",
+  "payment": "4539 1231 2312 3123",
+  "pfp": "default.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68eeb161324a56c6670ce391"
+  },
+  "username": "ana",
+  "password": "$2b$10$aXb/NzUHAjOIpC.jHsmxS.XrdoUMvzWYdXJogflYieReWS4qhY22q",
+  "type": "tourist",
+  "firstName": "Ana",
+  "lastName": "Anic",
+  "email": "ana@ana.ana",
+  "gender": "F",
+  "address": "Ana Ova Muda 3",
+  "phone": "00000000000",
+  "payment": "4539 1223 1233 1222",
+  "pfp": "default.png",
+  "active": false,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68eef55f4770a976b7fd7382"
+  },
+  "username": "tamara",
+  "password": "$2b$10$W5HJox9iW6wM5F2IGaJg6eQbrdzYiDsUUf0TbuktuD72JHA752wja",
+  "type": "owner",
+  "firstName": "Tamara",
+  "lastName": "Knezevic",
+  "email": "tamara@gmail.com",
+  "gender": "F",
+  "address": "Milutina Milankovića 68",
+  "phone": "005555555",
+  "payment": "5200 0000 3333 3333",
+  "pfp": "tamara.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68f58979a30c72a146b2b093"
+  },
+  "username": "admin",
+  "password": "$2b$10$/wUSeTD2b2UPtvPorDJNv.irFfkrGTP208VAodhvx.vI3JCpSj8dG",
+  "type": "admin",
+  "firstName": "Tijana",
+  "lastName": "Knezevic",
+  "email": "admin@admin.adm",
+  "gender": "F",
+  "address": "Adresa adresa 123",
+  "phone": "011111111",
+  "payment": "5353 5353 5353 5353",
+  "pfp": "admin.png",
+  "active": true,
+  "approved": true
+},
+{
+  "_id": {
+    "$oid": "68f58a7fa30c72a146b2b0c3"
+  },
+  "username": "test",
+  "password": "$2b$10$Id8i1tdjE8mms0lmqJUx0u/6G1M0guooFCaZkh8DPzocTpKEhbX0y",
+  "type": "tourist",
+  "firstName": "Test",
+  "lastName": "Test",
+  "email": "test@tst.ts",
+  "gender": "F",
+  "address": "test",
+  "phone": "01111111111",
+  "payment": "5300 0000 0000 0000",
+  "pfp": "default.png",
+  "active": false,
+  "approved": false
+},
+{
+  "_id": {
+    "$oid": "68f6e53a714c44e0b3205cd1"
+  },
+  "username": "test2",
+  "password": "$2b$10$rvpZEoveSmNxmgbb9m89xeA0TISpx8P6TlL.8bmN9a5IM39qR2adi",
+  "type": "tourist",
+  "firstName": "Tijana",
+  "lastName": "Knežević",
+  "email": "test1@tst.tst",
+  "gender": "F",
+  "address": "Milutina Milankovića 68",
+  "phone": "0629733216",
+  "payment": "5311 1111 1111 1111",
+  "pfp": "default.png",
+  "active": false,
+  "approved": false
+}]
