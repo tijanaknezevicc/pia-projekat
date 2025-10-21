@@ -70,6 +70,16 @@ class UserController {
         this.register = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 let user = JSON.parse(req.body.user);
+                let banned = yield burn_book_1.default.findOne({
+                    $or: [
+                        { username: user.username },
+                        { email: user.email }
+                    ]
+                });
+                if (banned) {
+                    res.status(403).json('nedozvoljeno korisnicko ime ili email');
+                    return;
+                }
                 let exists = yield user_1.default.findOne({ email: user.email });
                 if (exists) {
                     res.status(400).json('email vec postoji u bazi');

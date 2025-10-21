@@ -9,11 +9,13 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
       const ext = path.extname(file.originalname)
-      cb(null, JSON.parse(req.body.user).username + ext)
+      const timestamp = Date.now()
+      const randomString = Math.random().toString(36).substring(2, 15)
+      cb(null, `${timestamp}_${randomString}${ext}`)
     }
   })
   
-  const upload = multer({ storage })
+  const upload = multer({ storage }).array('images', 5)
 
 const propertyRouter = express.Router()
 
@@ -27,6 +29,24 @@ propertyRouter.route('/all-properties').get(
 
 propertyRouter.route('/property-details/:name').get(
     (req, res) => new PropertyController().getPropertyByName(req, res)
+)
+
+propertyRouter.route('/delete-property/:name').get(
+    (req, res) => new PropertyController().deleteProperty(req, res)
+)  
+
+propertyRouter.route('/add-property').post(
+    upload,
+    (req, res) => new PropertyController().addProperty(req, res)
+)
+
+propertyRouter.route('/update-property/:name').post(
+    upload,
+    (req, res) => new PropertyController().updateProperty(req, res)
+)
+
+propertyRouter.route('/get-my-properties').post(
+    (req, res) => new PropertyController().getPropertiesByOwner(req, res)
 )
 
 propertyRouter.route('/add-reservation').post(

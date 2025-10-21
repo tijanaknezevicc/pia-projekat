@@ -95,6 +95,85 @@ export class PropertyController {
             });
     }
 
+    getPropertiesByOwner = (req: express.Request, res: express.Response) => {
+        let owner = req.body
+
+        PropertyModel.find({ owner: owner.username })
+            .then(properties => {
+                if (properties.length === 0) {
+                    res.status(404).json('nema vikendica')
+                    return
+                }
+                res.json(properties)
+            })
+            .catch(error => {
+                console.error(error)
+                res.status(500).json('greska')
+            });
+    }
+
+    deleteProperty = (req: express.Request, res: express.Response) => {
+        let property = req.params.name
+        PropertyModel.deleteOne({ name: property }).then(ok => {
+            res.status(200).json('obrisana vikendica')
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json('greska')
+        })
+    }
+
+    addProperty = (req: express.Request, res: express.Response) => {
+        try {
+            let property = JSON.parse(req.body.property);
+            
+            const files = req.files as Express.Multer.File[];
+            if (files && files.length > 0) {
+                property.images = files.map(file => file.filename);
+            } else if (!property.images) {
+                property.images = [];
+            }
+    
+            PropertyModel.create(property)
+                .then(() => {
+                    res.status(201).json('vikendica dodata');
+                })
+                .catch(err => {
+                    res.status(500).json('greska pri dodavanju vikendice');
+                });
+                
+        } catch (err) {
+            res.status(400).json('neispravni podaci');
+        }
+    }
+
+    updateProperty = (req: express.Request, res: express.Response) => {
+    try {
+        const propertyName = req.params.name;        
+        let property = JSON.parse(req.body.property);
+        
+        const files = req.files as Express.Multer.File[];
+        
+        if (files && files.length > 0) {
+            let newImageFilenames = files.map(file => file.filename)
+            property.images = [...(property.images || []), ...newImageFilenames]
+        }
+
+        PropertyModel.updateOne({ name: propertyName }, property)
+            .then(result => {
+                if (result.matchedCount === 0) {
+                    res.status(404).json('vikendica nije pronadjena')
+                    return
+                }
+                res.status(200).json('vikendica azurirana')
+            })
+            .catch(err => {
+                res.status(500).json('greska')
+            });
+            
+    } catch (err) {
+        res.status(400).json('neispravni podaci');
+    }
+}  
 
     addReservation = (req: express.Request, res: express.Response) => {
         let reservation = req.body
@@ -173,67 +252,4 @@ export class PropertyController {
         let property = req.body.propertyName
 
     }
-
-    // getReservationsByMonth = (req: express.Request, res: express.Response) => {
-    //     let owner = req.body.owner
-    //     let year = req.body.year || new Date().getFullYear()
-    
-    //     // Pronađi sve vikendice vlasnika
-    //     PropertyModel.find({ owner: owner }).then(properties => {
-    //         if (properties.length === 0) {
-    //             return res.status(404).json('nema vikendica za ovog vlasnika')
-    //         }
-    
-    //         let results: any[] = []
-    //         let processedCount = 0
-    
-    //         // Za svaku vikendicu
-    //         properties.forEach((property, index) => {
-    //             this.processPropertyReservations(property.name, year, (monthlyData) => {
-    //                 results.push({
-    //                     propertyName: property.name,
-    //                     monthlyReservations: monthlyData
-    //                 })
-    
-    //                 processedCount++
-    
-    //                 // Kada su sve obrađene, pošalji rezultat
-    //                 if (processedCount === properties.length) {
-    //                     res.status(200).json(results)
-    //                 }
-    //             })
-    //         })
-    
-    //     }).catch(err => {
-    //         console.log(err)
-    //         res.status(500).json('greska')
-    //     })
-    // }
-    
-    // private processPropertyReservations = (propertyName: string, year: number, callback: (data: number[]) => void) => {
-    //     let startOfYear = new Date(year, 0, 1)
-    //     let endOfYear = new Date(year + 1, 0, 1)
-    
-    //     ReservationModel.find({
-    //         propertyName: propertyName,
-    //         approved: true,
-    //         dateBeg: { $gte: startOfYear, $lt: endOfYear }
-    //     }).then(reservations => {
-    //         // Inicijalizuj niz sa 12 nula
-    //         let monthlyCount = new Array(12).fill(0)
-    
-    //         // Prebroji rezervacije po mesecima
-    //         reservations.forEach(reservation => {
-    //             let month = new Date(reservation.dateBeg).getMonth()
-    //             monthlyCount[month]++
-    //         })
-    
-    //         callback(monthlyCount)
-    //     }).catch(err => {
-    //         console.log('Greška za vikendicu:', propertyName, err)
-    //         // Vrati nule u slučaju greške
-    //         callback(new Array(12).fill(0))
-    //     })
-    // }
-
 }

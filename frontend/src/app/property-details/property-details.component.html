@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div *ngIf="property" id="propertyCarousel" class="col-md-8 carousel slide mb-4 mx-auto" data-bs-ride="carousel">
+  <div *ngIf="property.images.length != 0" id="propertyCarousel" class="col-md-8 carousel slide mb-4 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
       @for (img of property.images; track img; let i = $index) {
         <div class="carousel-item" [class.active]="i === 0">

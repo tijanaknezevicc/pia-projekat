@@ -1,0 +1,25 @@
+.stars-empty {
+  position: relative;
+  display: inline-block;
+  color: #bbbbbb;
+}
+
+.stars-empty::before {
+  content: "★★★★★";
+  font-size: 24px;
+}
+
+.stars-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  color: rgb(173, 112, 223);
+}
+
+.stars-filled::before {
+  content: "★★★★★";
+  font-size: 24px;
+}

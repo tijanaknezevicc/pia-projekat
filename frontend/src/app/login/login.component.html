@@ -17,6 +17,7 @@
         placeholder="korisnicko ime"
         class="form-control form-control-lg"
         [(ngModel)]="username"
+        [class.is-invalid]="usernameCtrl.invalid && usernameCtrl.touched"
         #usernameCtrl="ngModel"
         required>
 
@@ -25,7 +26,7 @@
       </label>
 
       @if (usernameCtrl.invalid && usernameCtrl.touched) {
-      <div class="alert alert-danger">
+      <div class="invalid-feedback d-block">
         unesite korisnicko ime
       </div>
       }
@@ -40,6 +41,7 @@
         class="form-control form-control-lg"
         [(ngModel)]="password"
         #passwordCtrl="ngModel"
+        [class.is-invalid]="passwordCtrl.invalid && passwordCtrl.touched"
         required>
 
       <label class="form-label" for="password">
@@ -47,7 +49,7 @@
       </label>
 
       @if (passwordCtrl.invalid && passwordCtrl.touched) {
-      <div class="alert alert-danger">
+      <div class="invalid-feedback d-block">
         unesite lozinku
       </div>
       }

@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Property } from '../models/property';
 import { Reservation } from '../models/reservation';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,22 @@ export class PropertyService {
 
   getPropertyByName(name: string): Observable<Property> {
     return this.http.get<Property>(`${this.url}/property-details/${encodeURIComponent(name)}`)
+  }
+
+  getMyProperties(user: User): Observable<Property[]> {
+    return this.http.post<Property[]>(`${this.url}/get-my-properties/`, user)
+  }
+
+  deleteProperty(property: Property) {
+    return this.http.get<string>(`${this.url}/delete-property/${encodeURIComponent(property.name)}`);
+  }
+
+  addProperty(formData: FormData): Observable<any> {
+    return this.http.post(`${this.url}/add-property`, formData);
+  }
+
+  updateProperty(propertyName: string, formData: FormData): Observable<any> {
+    return this.http.post(`${this.url}/update-property/${encodeURIComponent(propertyName)}`, formData);
   }
 
   addReservation(reservation: Reservation) {

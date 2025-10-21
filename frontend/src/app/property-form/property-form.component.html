@@ -1,0 +1,166 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">
+            {{ editing ? 'izmeni podatke o vikendici' : 'dodaj novu vikendicu' }}
+          </h5>
+
+          @if (!editing) {
+          <div class="d-flex align-items-center gap-2 justify-content-end">
+            <label for="jsonUpload" class="form-label mb-0 me-2"></label>
+            <div class="input-group" style="width: 200px;">
+              <input type="text" class="form-control form-control-sm" [value]="selectedJson?.name || ''" readonly placeholder="ucitaj iz JSON fajla">
+              <input type="file" class="d-none" id="jsonUpload" (change)="onJsonFileSelect($event)" accept=".json" #jsonFileInput>
+              <button class="btn btn-secondary btn-sm" type="button" (click)="jsonFileInput.click()">izaberi</button>
+            </div>
+          </div>
+        }
+
+        </div>
+        <div class="card-body">
+          <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">naziv vikendice</label>
+                <input type="text" class="form-control" [class.is-invalid]="isFieldInvalid('name')" id="name"
+                  formControlName="name" placeholder="naziv vikendice">
+                <div class="invalid-feedback">
+                  {{ getFieldError('name') }}
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="location" class="form-label">mesto</label>
+                <input type="text" class="form-control" [class.is-invalid]="isFieldInvalid('location')" id="location"
+                  formControlName="location" placeholder="mesto">
+                <div class="invalid-feedback">
+                  {{ getFieldError('location') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="owner" class="form-label">vlasnik</label>
+                <input type="text" class="form-control" id="owner" formControlName="owner" readonly>
+              </div>
+
+              <div class="col-md-6">
+                <label for="phone" class="form-label">kontakt telefon</label>
+                <input type="text" class="form-control" [class.is-invalid]="isFieldInvalid('phone')" id="phone"
+                  formControlName="phone" placeholder="kontakt telefon">
+                <div class="invalid-feedback">
+                  {{ getFieldError('phone') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="services" class="form-label">usluge</label>
+              <textarea class="form-control" [class.is-invalid]="isFieldInvalid('services')" id="services"
+                formControlName="services" rows="3"
+                placeholder="usluge"></textarea>
+              <div class="invalid-feedback">
+                {{ getFieldError('services') }}
+              </div>
+            </div>
+
+            <div formGroupName="pricing">
+              <h5 class="mb-3">cena</h5>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="summerPrice" class="form-label">cena - leto</label>
+                  <input type="number" class="form-control"
+                    [class.is-invalid]="isNestedFieldInvalid('pricing', 'summer')" id="summerPrice"
+                    formControlName="summer" min="1" placeholder="cena - leto">
+                  <div class="invalid-feedback">
+                    vrednost je obavezna i veca od 0
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="winterPrice" class="form-label">cena - zima</label>
+                  <input type="number" class="form-control"
+                    [class.is-invalid]="isNestedFieldInvalid('pricing', 'winter')" id="winterPrice"
+                    formControlName="winter" min="1" placeholder="cena - zima">
+                  <div class="invalid-feedback">
+                    vrednost je obavezna i veca od 0
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div formGroupName="coordinates">
+              <h5 class="mb-3">koordinate vikendice</h5>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="longitude" class="form-label">longituda</label>
+                  <input type="number" class="form-control"
+                    [class.is-invalid]="isNestedFieldInvalid('coordinates', 'x')" id="longitude" formControlName="x"
+                    step="0.000001" min="-180" max="180" placeholder="longituda (-180, 180)">
+                  <div class="invalid-feedback">
+                    vrednost mora biti između -180 i 180
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="latitude" class="form-label">latituda</label>
+                  <input type="number" class="form-control"
+                    [class.is-invalid]="isNestedFieldInvalid('coordinates', 'y')" id="latitude" formControlName="y"
+                    step="0.000001" min="-90" max="90" placeholder="latituda (-90, 90)">
+                  <div class="invalid-feedback">
+                    vrednost mora biti između -90 i 90
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h5 class="mb-3">slike vikendice</h5>
+
+              <div class="mb-3">
+                <label for="imageUpload" class="form-label">dodaj najvise 5 slika</label>
+                <input type="file" class="form-control" id="imageUpload" (change)="onFileSelect($event)"
+                  accept="image/*" multiple>
+              </div>
+
+              @if (getAllImages().length > 0) {
+              <div class="row">
+                @for (imageUrl of getAllImages(); track $index) {
+                <div class="col-md-3 mb-3">
+                  <div class="card">
+                    <img [src]="backendUrl + imageUrl" class="card-img-top image-preview" [alt]="'slika ' + $index"
+                      style="height: 150px; object-fit: cover;">
+                    <div class="card-body p-2">
+                      <button type="button" class="btn btn-danger btn-sm w-100" (click)="removeImage($index)">
+                        ukloni
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                }
+              </div>
+              } @else {
+              <div class="alert alert-info">
+                nema dodatih slika
+              </div>
+              }
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-secondary" (click)="cancel()">
+                odustani
+              </button>
+              <button type="submit" class="btn btn-primary" [disabled]="propertyForm.invalid">
+                potvrdi
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import { BookComponent } from './book/book.component';
 import { RateComponent } from './rate/rate.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminPropertiesComponent } from './admin-properties/admin-properties.component';
+import { PropertyFormComponent } from './property-form/property-form.component';
 
 export const routes: Routes = [
   {path: "", component: GuestComponent},
@@ -32,5 +33,6 @@ export const routes: Routes = [
   {path: "rate-property/:name", component: RateComponent},
   {path: "admin-users", component: AdminUsersComponent},
   {path: "admin-properties", component: AdminPropertiesComponent},
-
+  {path: "edit-property/:name", component: PropertyFormComponent},
+  {path: "add-property", component: PropertyFormComponent}
 ];

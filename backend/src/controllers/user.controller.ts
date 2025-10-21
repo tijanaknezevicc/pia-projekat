@@ -60,9 +60,21 @@ export class UserController {
         }
     }
 
-    register = async (req: express.Request, res: express.Response) => { // popravi da proveri i burnbook
+    register = async (req: express.Request, res: express.Response) => {
         try {
             let user = JSON.parse(req.body.user)
+
+            let banned = await BurnBookModel.findOne({
+                $or: [
+                    {username: user.username},
+                    {email: user.email}
+                ]
+            })
+
+            if (banned) {
+                res.status(403).json('nedozvoljeno korisnicko ime ili email')
+                return
+            }
             
             let exists = await UserModel.findOne({email: user.email})
             if (exists) {

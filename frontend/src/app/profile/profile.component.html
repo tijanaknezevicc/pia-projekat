@@ -17,17 +17,17 @@
               <div class="row align-items-center">
                 <div class="col-md-3 mb-4 text-center">
                   <div class="row mb-4 mt-4">
-                      <img [src]="backendUrl + user.pfp + '?t=' + timestamp" alt="profilna slika" class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
-                      <input type="file" id="pfp" name="pfp" class="form-control mt-3" (change)="onFileSelect($event)">
+                    <img [src]="backendUrl + user.pfp + '?t=' + timestamp" alt="profilna slika"
+                      class="img-fluid rounded" style="width: auto; height: auto; object-fit: cover;">
+                    <input type="file" id="pfp" name="pfp" class="form-control mt-3" (change)="onFileSelect($event)">
 
-                      @if (user.pfp != "default.png") {
-                        <div class="row mb-4 mt-4">
+                    @if (user.pfp != "default.png") {
+                    <div class="row mb-4 mt-4">
                       <button type="button" class="btn btn-secondary btn-md" (click)="removePfp()">
                         ukloni profilnu sliku
-                        <!-- ovde namesti da se mozda ne promeni slika odmah cim se klikne dugme nego tek kad se potvrde izmene, takodje da dugme clearuje file input -->
                       </button>
                     </div>
-                      }
+                    }
                   </div>
                 </div>
 
@@ -38,20 +38,13 @@
                         <label class="form-label" for="email">
                           e-mail
                         </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          placeholder="e-mail"
+                        <input type="email" id="email" name="email" placeholder="e-mail"
                           class="form-control form-control-lg"
-                          [(ngModel)]="user.email"
-                          #emailCtrl="ngModel"
-                          pattern="^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$"
-                          required>
-
+                          [class.is-invalid]="emailCtrl.invalid && emailCtrl.touched" [(ngModel)]="user.email"
+                          #emailCtrl="ngModel" pattern="^[\w.\-]+@([\w\-]+\.)+[\w\-]{2,4}$" required>
 
                         @if (emailCtrl.invalid && emailCtrl.touched) {
-                        <div class="alert alert-danger">
+                        <div class="invalid-feedback">
                           @if (emailCtrl.errors?.['required']) {
                           polje je obavezno
                           }
@@ -68,22 +61,16 @@
                         <label class="form-label" for="phone">
                           kontakt telefon
                         </label>
-                        <input
-                          type="text"
-                          id="phone"
-                          name="phone"
-                          placeholder="kontakt telefon"
+                        <input type="text" id="phone" name="phone" placeholder="kontakt telefon"
                           class="form-control form-control-lg"
-                          [(ngModel)]="user.phone"
-                          #phoneCtrl="ngModel"
-                          required
-                          pattern="^\+?\d{8,15}$">
+                          [class.is-invalid]="phoneCtrl.invalid && phoneCtrl.touched" [(ngModel)]="user.phone"
+                          #phoneCtrl="ngModel" required pattern="^\+?\d{8,15}$">
 
                         @if (phoneCtrl.invalid && phoneCtrl.touched) {
-                          <div class="alert alert-danger">
-                            @if (phoneCtrl.errors?.['required']) { polje je obavezno }
-                            @if (phoneCtrl.errors?.['pattern']) { broj telefona nije u ispravnom formatu }
-                          </div>
+                        <div class="invalid-feedback">
+                          @if (phoneCtrl.errors?.['required']) { polje je obavezno }
+                          @if (phoneCtrl.errors?.['pattern']) { broj telefona nije u ispravnom formatu }
+                        </div>
                         }
                       </div>
                     </div>
@@ -94,18 +81,13 @@
                         <label class="form-label" for="firstName">
                           ime
                         </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          name="firstName"
-                          placeholder="ime"
+                        <input type="text" id="firstName" name="firstName" placeholder="ime"
                           class="form-control form-control-lg"
-                          [(ngModel)]="user.firstName"
-                          #firstNameCtrl="ngModel"
-                          required>
+                          [class.is-invalid]="firstNameCtrl.invalid && firstNameCtrl.touched"
+                          [(ngModel)]="user.firstName" #firstNameCtrl="ngModel" required>
 
                         @if (firstNameCtrl.invalid && firstNameCtrl.touched) {
-                          <div class="alert alert-danger">polje je obavezno</div>
+                        <div class="invalid-feedback">polje je obavezno</div>
                         }
                       </div>
                     </div>
@@ -115,18 +97,13 @@
                         <label class="form-label" for="lastName">
                           prezime
                         </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          name="lastName"
-                          placeholder="prezime"
+                        <input type="text" id="lastName" name="lastName" placeholder="prezime"
                           class="form-control form-control-lg"
-                          [(ngModel)]="user.lastName"
-                          #lastNameCtrl="ngModel"
-                          required>
+                          [class.is-invalid]="lastNameCtrl.invalid && lastNameCtrl.touched" [(ngModel)]="user.lastName"
+                          #lastNameCtrl="ngModel" required>
 
                         @if (lastNameCtrl.invalid && lastNameCtrl.touched) {
-                        <div class="alert alert-danger">polje je obavezno</div>
+                        <div class="invalid-feedback">polje je obavezno</div>
                         }
                       </div>
                     </div>
@@ -138,36 +115,32 @@
                         <label class="form-label" for="address">
                           adresa
                         </label>
-                        <input
-                          type="text"
-                          id="address"
-                          name="address"
-                          placeholder="adresa"
+                        <input type="text" id="address" name="address" placeholder="adresa"
                           class="form-control form-control-lg"
-                          [(ngModel)]="user.address"
-                          #addressCtrl="ngModel"
-                          required>
+                          [class.is-invalid]="addressCtrl.invalid && addressCtrl.touched" [(ngModel)]="user.address"
+                          #addressCtrl="ngModel" required>
 
                         @if (addressCtrl.invalid && addressCtrl.touched) {
-                        <div class="alert alert-danger">polje je obavezno</div>
+                        <div class="invalid-feedback">polje je obavezno</div>
                         }
                       </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
-                      <label class="form-label" for="payment">broj kreditne kartice<span style="color:red">*</span></label>
+                      <label class="form-label" for="payment">broj kreditne kartice<span
+                          style="color:red">*</span></label>
                       <div class="input-group">
                         <input type="text" id="payment" name="payment" class="form-control form-control-lg"
-                          [(ngModel)]="user.payment" #paymentCtrl="ngModel" (input)="formatCardNumber($event)"
-                          maxlength="19" required
-                          pattern="^((?:4539|4556|4916|4532|4929|4485|4716)(?: \d{4}){3}|5[1-5]\d{2}(?: \d{4}){3}|(?:30[0-3]\d|36\d{2}|38\d{2}) \d{7} \d{4})$"
+                          [class.is-invalid]="paymentCtrl.invalid && paymentCtrl.touched" [(ngModel)]="user.payment"
+                          #paymentCtrl="ngModel" (input)="formatCardNumber($event)" maxlength="19" required
+                          pattern="^((?:4539|4556|4916|4532|4929|4485|4716)(?: \d{4}){3}|5[1-5]\d{2}(?: \d{4}){3}|(?:30[0-3]\d|3[68]\d{2}) \d{7} \d{4})$"
                           title="Diners, MasterCard ili Visa">
                         <span class="input-group-text bg-white border-start-0">
                           <img *ngIf="cardType" [src]="cardType" alt="card logo" style="height:24px;" />
                         </span>
                       </div>
                       @if (paymentCtrl.invalid && paymentCtrl.touched) {
-                      <div class="alert alert-danger">
+                      <div class="invalid-feedback d-block">
                         @if (paymentCtrl.errors?.['required']) { polje je obavezno }
                         @if (paymentCtrl.errors?.['pattern']) { nije uneta ispravna kartica }
                       </div>
@@ -177,10 +150,15 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="mt-4 pt-2">
+              <div class="row col-5">
+                <div class="mt-4 pt-2 col-md-6">
                   <button class="btn btn-primary btn-lg" type="submit" [disabled]="!profileForm.valid">
-                    ažuriraj profil
+                    azuriraj profil
+                  </button>
+                </div>
+                <div class="mt-4 pt-2 col-md-6">
+                  <button class="btn btn-secondary btn-lg" type="button" (click)="discard()">
+                    odustani
                   </button>
                 </div>
               </div>

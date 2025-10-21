@@ -5,7 +5,7 @@ export class User {
   firstName = ""
   lastName = ""
   email = ""
-  gender = "other"
+  gender = "O"
   address = ""
   phone = ""
   payment = ""

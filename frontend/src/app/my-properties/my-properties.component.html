@@ -1,1 +1,57 @@
-<p>my-properties works!</p>
+<div class="container mt-4">
+  @if (properties.length != 0) {
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>naziv</th>
+        <th>mesto</th>
+        <th>usluge</th>
+        <th>cena-leto</th>
+        <th>cena-zima</th>
+        <th>ocena</th>
+        <th colspan="2">akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (property of properties; track property.name) {
+      <tr>
+        <td>{{ property.name }}</td>
+        <td>{{ property.location }}</td>
+        <td>{{ property.services }}</td>
+        <td>{{ property.pricing.summer }}</td>
+        <td>{{ property.pricing.winter }}</td>
+        <td>
+          @if (property.comments.length != 0) {
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div class="stars-empty">
+                <div class="stars-filled" [ngStyle]="{'width': (getAvgGrade(property) / 5 * 100) + '%'}"></div>
+              </div>
+              <div>{{ getAvgGrade(property) | number: '1.2-2'}}</div>
+            </div>
+          }
+          @else {
+            <span class="text-muted">jos uvek nema ocena</span>
+          }
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteProperty(property)">obrisi</button>
+        </td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="edit(property)">izmeni</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+  @else {
+  <div class="alert alert-info" role="alert">
+    <span>nema pronadjenih vikendica</span>
+  </div>
+  }
+
+  <div class="d-flex justify-content-end mt-3">
+    <button class="btn btn-primary" (click)="add()">
+      dodaj vikendicu
+    </button>
+</div>

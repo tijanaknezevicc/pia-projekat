@@ -78,6 +78,10 @@ export class ProfileComponent {
     })
   }
 
+  discard() {
+    this.ngOnInit()
+  }
+
   formatCardNumber(event: any) {
     let input = event.target.value.replace(/\D/g, '')
 

@@ -16,7 +16,6 @@
 
               <div class="row">
                 <div class="col-md-4 mb-4">
-
                   <div class="form-outline form-floating mb-3">
                     <input
                       type="text"
@@ -24,6 +23,7 @@
                       name="username"
                       placeholder="korisnicko ime"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="usernameCtrl.invalid && usernameCtrl.touched"
                       [(ngModel)]="user.username"
                       #usernameCtrl="ngModel"
                       required>
@@ -33,13 +33,11 @@
                     </label>
 
                     @if (usernameCtrl.invalid && usernameCtrl.touched) {
-                      <div class="alert alert-danger">
+                      <div class="invalid-feedback">
                         polje je obavezno
                       </div>
                     }
-
                   </div>
-
                 </div>
 
                 <div class="col-md-4 mb-4">
@@ -50,6 +48,7 @@
                       name="password"
                       placeholder="lozinka"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="passwordCtrl.invalid && passwordCtrl.touched"
                       [(ngModel)]="user.password"
                       #passwordCtrl="ngModel"
                       required
@@ -60,12 +59,11 @@
                     </label>
 
                     @if (passwordCtrl.invalid && passwordCtrl.touched) {
-                      <div class="alert alert-danger">
-                        lozinka mora imati izmedju 6 i 10 karaktera, pocinjati slovom, sadrzati bar: jedno veliko slovo, tri mala slova, jedan
-                        broj i jedan specijalni karakter
+                      <div class="invalid-feedback">
+                        lozinka mora imati izmedju 6 i 10 karaktera, pocinjati slovom, sadrzati bar: jedno veliko slovo, tri
+                        mala slova, jedan broj i jedan specijalni karakter
                       </div>
                     }
-
                   </div>
                 </div>
 
@@ -78,34 +76,32 @@
                         name="email"
                         placeholder="e-mail"
                         class="form-control form-control-lg"
+                        [class.is-invalid]="emailCtrl.invalid && emailCtrl.touched"
                         [(ngModel)]="user.email"
                         #emailCtrl="ngModel"
-                        pattern="^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$"
-
+                        pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
                         required>
 
-                        <label class="form-label" for="email">
-                          e-mail<span class="required-star" style="color: red">*</span>
-                        </label>
+                      <label class="form-label" for="email">
+                        e-mail<span class="required-star" style="color: red">*</span>
+                      </label>
 
-                        @if (emailCtrl.invalid && emailCtrl.touched) {
-                        <div class="alert alert-danger">
-                          @if (emailCtrl.errors?.['required']) {
-                            polje je obavezno
-                          }
-                          @if (emailCtrl.errors?.['pattern']) {
-                            email nije u ispravnom formatu
-                          }
-                        </div>
+                      @if (emailCtrl.invalid && emailCtrl.touched) {
+                      <div class="invalid-feedback">
+                        @if (emailCtrl.errors?.['required']) {
+                          polje je obavezno
                         }
-
+                        @if (emailCtrl.errors?.['pattern']) {
+                          email nije u ispravnom formatu
+                        }
+                      </div>
+                      }
                     </div>
                   </div>
-                  </div>
+                </div>
               </div>
 
               <div class="row">
-
                 <div class="col-md-4 mb-4">
                   <div class="form-outline form-floating mb-3">
                     <input
@@ -114,6 +110,7 @@
                       name="firstName"
                       placeholder="ime"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="firstNameCtrl.invalid && firstNameCtrl.touched"
                       [(ngModel)]="user.firstName"
                       #firstNameCtrl="ngModel"
                       required />
@@ -123,11 +120,10 @@
                     </label>
 
                     @if (firstNameCtrl.invalid && firstNameCtrl.touched) {
-                      <div class="alert alert-danger">
+                      <div class="invalid-feedback">
                         polje je obavezno
                       </div>
                     }
-
                   </div>
                 </div>
 
@@ -139,6 +135,7 @@
                       name="lastName"
                       placeholder="prezime"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="lastNameCtrl.invalid && lastNameCtrl.touched"
                       [(ngModel)]="user.lastName"
                       #lastNameCtrl="ngModel"
                       required>
@@ -148,34 +145,34 @@
                     </label>
 
                     @if (lastNameCtrl.invalid && lastNameCtrl.touched) {
-                      <div class="alert alert-danger">
+                      <div class="invalid-feedback">
                         polje je obavezno
                       </div>
                     }
                   </div>
                 </div>
-                  <div class="col-md-4 mb-4">
-                    <p class="mb-2 pb-1">
-                      pol<span class="required-star" style="color: red">*</span>
-                    </p>
 
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="M" value="M"
-                        [(ngModel)]="user.gender" required />
-                      <label class="form-check-label" for="M">M</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="F" value="F"
-                        [(ngModel)]="user.gender" required />
-                      <label class="form-check-label" for="F">Z</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="gender" id="O" value="O"
-                        [(ngModel)]="user.gender" required>
-                      <label class="form-check-label" for="O">drugo</label>
-                    </div>
+                <div class="col-md-4 mb-4">
+                  <p class="mb-2 pb-1">
+                    pol<span class="required-star" style="color: red">*</span>
+                  </p>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="M" value="M"
+                      [(ngModel)]="user.gender" required />
+                    <label class="form-check-label" for="M">M</label>
                   </div>
-
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="F" value="F"
+                      [(ngModel)]="user.gender" required />
+                    <label class="form-check-label" for="F">Z</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="O" value="O"
+                      [(ngModel)]="user.gender" required>
+                    <label class="form-check-label" for="O">drugo</label>
+                  </div>
+                </div>
               </div>
 
               <div class="row">
@@ -187,6 +184,7 @@
                       name="address"
                       placeholder="adresa"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="addressCtrl.invalid && addressCtrl.touched"
                       [(ngModel)]="user.address"
                       #addressCtrl="ngModel"
                       required>
@@ -196,11 +194,10 @@
                     </label>
 
                     @if (addressCtrl.invalid && addressCtrl.touched) {
-                      <div class="alert alert-danger">
+                      <div class="invalid-feedback">
                         polje je obavezno
                       </div>
                     }
-
                   </div>
                 </div>
 
@@ -212,6 +209,7 @@
                       name="phone"
                       placeholder="kotakt telefon"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="phoneCtrl.invalid && phoneCtrl.touched"
                       [(ngModel)]="user.phone"
                       #phoneCtrl="ngModel"
                       required
@@ -222,7 +220,7 @@
                     </label>
 
                     @if (phoneCtrl.invalid && phoneCtrl.touched) {
-                    <div class="alert alert-danger">
+                    <div class="invalid-feedback">
                       @if (phoneCtrl.errors?.['required']) {
                         polje je obavezno
                       }
@@ -230,8 +228,7 @@
                         broj telefona nije u ispravnom formatu
                       }
                     </div>
-                  }
-
+                    }
                   </div>
                 </div>
 
@@ -239,6 +236,7 @@
                   <div class="form-outline form-floating">
                     <select
                       class="form-select form-control-lg"
+                      [class.is-invalid]="typeCtrl.invalid && typeCtrl.touched"
                       name="type"
                       [(ngModel)]="user.type"
                       #typeCtrl="ngModel"
@@ -247,21 +245,18 @@
                       <option value="owner">vlasnik</option>
                       <option value="tourist">turista</option>
                     </select>
+
+                    @if (typeCtrl.invalid && typeCtrl.touched) {
+                      <div class="invalid-feedback">
+                        polje je obavezno
+                      </div>
+                    }
                   </div>
-
-                  @if (typeCtrl.invalid && typeCtrl.touched) {
-                    <div class="alert alert-danger">
-                      polje je obavezno
-                    </div>
-                  }
-
                 </div>
               </div>
 
               <div class="row">
-
                 <div class="col-md-8 mb-4">
-
                   <label class="form-label" for="payment">
                     broj kreditne kartice<span class="required-star" style="color: red">*</span>
                   </label>
@@ -271,6 +266,7 @@
                       id="payment"
                       name="payment"
                       class="form-control form-control-lg"
+                      [class.is-invalid]="paymentCtrl.invalid && paymentCtrl.touched"
                       [(ngModel)]="user.payment"
                       #paymentCtrl="ngModel"
                       (input)="formatCardNumber($event)"
@@ -282,19 +278,18 @@
                     <span class="input-group-text bg-white border-start-0">
                       <img *ngIf="cardType" [src]="cardType" alt="card logo" style="height:24px;" />
                     </span>
-
                   </div>
-                    @if (paymentCtrl.invalid && paymentCtrl.touched) {
-                      <div class="alert alert-danger">
-                        @if (paymentCtrl.errors?.['required']) {
-                          polje je obavezno
-                        }
-                        @if (paymentCtrl.errors?.['pattern']) {
-                          nije uneta ispravna kartica
-                        }
+
+                  @if (paymentCtrl.invalid && paymentCtrl.touched) {
+                    <div class="invalid-feedback d-block">
+                      @if (paymentCtrl.errors?.['required']) {
+                        polje je obavezno
+                      }
+                      @if (paymentCtrl.errors?.['pattern']) {
+                        nije uneta ispravna kartica
+                      }
                     </div>
                   }
-
                 </div>
 
                 <div class="col-md-4 mb-4">
@@ -309,10 +304,10 @@
               </div>
 
               <div class="row">
-                  <div class="mt-4 pt-2">
-                    <button class="btn btn-primary btn-lg" type="submit" [disabled]="!registerForm.valid">
-                      registruj se
-                    </button>
+                <div class="mt-4 pt-2">
+                  <button class="btn btn-primary btn-lg" type="submit" [disabled]="!registerForm.valid">
+                    registruj se
+                  </button>
                 </div>
               </div>
             </form>

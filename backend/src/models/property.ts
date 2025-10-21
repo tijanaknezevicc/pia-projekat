@@ -20,7 +20,7 @@ const propertySchema = new mongoose.Schema({
     name: { type: String, required: true },
     location: { type: String, required: true },
     owner: { type: String, required: true },
-    dateBlocked: { type: Date },
+    dateBlocked: { type: Date, default: "" },
     images: { type: [String], required: true },
     services: { type: String, required: true },
     pricing: { type: pricingSchema, required: true },

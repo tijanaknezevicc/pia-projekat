@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: cadetblue;">
   <div class="container-fluid">
+    <a class="navbar-brand" *ngIf="!isLogged" href="">Vikendice</a>
     <a class="navbar-brand" *ngIf="type=='tourist' || type=='owner'" [href]="type">Vikendice</a>
     <a class="navbar-brand" *ngIf="type=='admin'" href="admin-users">Vikendice</a>
 

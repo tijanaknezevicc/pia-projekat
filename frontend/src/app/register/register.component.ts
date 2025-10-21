@@ -39,13 +39,16 @@ export class RegisterComponent {
       },
       error: (err) => {
         if (err.status === 400) {
-          this.message = 'email vec postoji u bazi';
+          this.message = 'email vec postoji u bazi'
+        }
+        else if (err.status === 403) {
+          this.message = 'nedozvoljeno korisnicko ime ili email'
         }
         else if (err.status === 500) {
-          this.message = 'server error';
+          this.message = 'server error'
         }
         else {
-          this.message = 'greska';
+          this.message = 'greska'
         }
       }
     })

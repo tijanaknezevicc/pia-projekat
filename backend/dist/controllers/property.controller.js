@@ -85,6 +85,81 @@ class PropertyController {
                 res.status(500).json('greska');
             });
         };
+        this.getPropertiesByOwner = (req, res) => {
+            let owner = req.body;
+            property_1.default.find({ owner: owner.username })
+                .then(properties => {
+                if (properties.length === 0) {
+                    res.status(404).json('nema vikendica');
+                    return;
+                }
+                res.json(properties);
+            })
+                .catch(error => {
+                console.error(error);
+                res.status(500).json('greska');
+            });
+        };
+        this.deleteProperty = (req, res) => {
+            let property = req.params.name;
+            property_1.default.deleteOne({ name: property }).then(ok => {
+                res.status(200).json('obrisana vikendica');
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
+        };
+        this.addProperty = (req, res) => {
+            try {
+                let property = JSON.parse(req.body.property);
+                const files = req.files;
+                if (files && files.length > 0) {
+                    property.images = files.map(file => file.filename);
+                }
+                else if (!property.images) {
+                    property.images = [];
+                }
+                property_1.default.create(property)
+                    .then(() => {
+                    res.status(201).json('vikendica dodata');
+                })
+                    .catch(err => {
+                    res.status(500).json('greska pri dodavanju vikendice');
+                });
+            }
+            catch (err) {
+                res.status(400).json('neispravni podaci');
+            }
+        };
+        this.updateProperty = (req, res) => {
+            try {
+                const propertyName = req.params.name;
+                let property = JSON.parse(req.body.property);
+                const files = req.files;
+                //let newImageFilenames: string[] = [];
+                if (files && files.length > 0) {
+                    let newImageFilenames = files.map(file => file.filename);
+                    property.images = [...(property.images || []), ...newImageFilenames];
+                }
+                // const existingImages = property.images || [];
+                // const allImages = [...existingImages, ...newImageFilenames];
+                // property.images = allImages;
+                property_1.default.updateOne({ name: propertyName }, property)
+                    .then(result => {
+                    if (result.matchedCount === 0) {
+                        res.status(404).json('vikendica nije pronadjena');
+                        return;
+                    }
+                    res.status(200).json('vikendica azurirana');
+                })
+                    .catch(err => {
+                    res.status(500).json('greska');
+                });
+            }
+            catch (err) {
+                res.status(400).json('neispravni podaci');
+            }
+        };
         this.addReservation = (req, res) => {
             let reservation = req.body;
             property_1.default.findOne({ name: reservation.propertyName })
