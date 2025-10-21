@@ -247,9 +247,16 @@ export class PropertyController {
         })
     }
 
-    getReservationsByMonth = (req: express.Request, res: express.Response) => {
-        let month = req.body.month // 0-11
-        let property = req.body.propertyName
-
+    getReservationsByProperty = (req: express.Request, res: express.Response) => {
+        let property = req.body
+        
+        ReservationModel.find({ propertyName: property.name })
+            .then(reservations => {
+                res.status(200).json(reservations)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).json('greska')
+            })  
     }
 }

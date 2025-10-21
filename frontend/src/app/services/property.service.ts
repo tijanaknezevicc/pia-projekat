@@ -58,4 +58,8 @@ export class PropertyService {
   blockProperty(property: Property) {
     return this.http.post(`${this.url}/block-property`, property);
   }
+
+  getReservationsByProperty(property: Property) {
+    return this.http.post<Reservation[]>(`${this.url}/get-reservations-by-property`, property);
+  }
 }

@@ -1,1 +1,42 @@
-<p>stats works!</p>
+<div class="container mt-4">
+  <h5 class="text-center mb-4">statistika</h5>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div *ngIf="!loading && properties.length === 0" class="text-center">
+    <p class="alert alert-info">nemate nijednu vikendicu</p>
+  </div>
+
+  <div *ngIf="!loading && properties.length > 0">
+
+    <div class="text-center mb-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <h5>{{ currentProperty.name }}</h5>
+      </div>
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <span class="text-muted">{{ currentProperty.location }}</span>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <button class="btn btn-secondary btn-sm me-2" (click)="prevProperty()" [disabled]="properties.length <= 1">
+          <<
+        </button>
+
+        <button class="btn btn-secondary btn-sm ms-2" (click)="nextProperty()" [disabled]="properties.length <= 1">
+          >>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <canvas #barChart height="400"></canvas>
+      </div>
+      <div class="col-md-6 mb-3">
+        <canvas #pieChart height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

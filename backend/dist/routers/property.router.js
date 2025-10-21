@@ -29,4 +29,5 @@ propertyRouter.route('/update-property/:name').post(upload, (req, res) => new pr
 propertyRouter.route('/get-my-properties').post((req, res) => new property_controller_1.PropertyController().getPropertiesByOwner(req, res));
 propertyRouter.route('/add-reservation').post((req, res) => new property_controller_1.PropertyController().addReservation(req, res));
 propertyRouter.route('/block-property').post((req, res) => new property_controller_1.PropertyController().blockProperty(req, res));
+propertyRouter.route('/get-reservations-by-property').post((req, res) => new property_controller_1.PropertyController().getReservationsByProperty(req, res));
 exports.default = propertyRouter;

@@ -136,14 +136,10 @@ class PropertyController {
                 const propertyName = req.params.name;
                 let property = JSON.parse(req.body.property);
                 const files = req.files;
-                //let newImageFilenames: string[] = [];
                 if (files && files.length > 0) {
                     let newImageFilenames = files.map(file => file.filename);
                     property.images = [...(property.images || []), ...newImageFilenames];
                 }
-                // const existingImages = property.images || [];
-                // const allImages = [...existingImages, ...newImageFilenames];
-                // property.images = allImages;
                 property_1.default.updateOne({ name: propertyName }, property)
                     .then(result => {
                     if (result.matchedCount === 0) {
@@ -221,61 +217,17 @@ class PropertyController {
                 res.status(500).json('greska');
             });
         };
-        this.getReservationsByMonth = (req, res) => {
-            let month = req.body.month; // 0-11
-            let property = req.body.propertyName;
+        this.getReservationsByProperty = (req, res) => {
+            let property = req.body;
+            reservation_1.default.find({ propertyName: property.name })
+                .then(reservations => {
+                res.status(200).json(reservations);
+            })
+                .catch(err => {
+                console.log(err);
+                res.status(500).json('greska');
+            });
         };
-        // getReservationsByMonth = (req: express.Request, res: express.Response) => {
-        //     let owner = req.body.owner
-        //     let year = req.body.year || new Date().getFullYear()
-        //     // Pronađi sve vikendice vlasnika
-        //     PropertyModel.find({ owner: owner }).then(properties => {
-        //         if (properties.length === 0) {
-        //             return res.status(404).json('nema vikendica za ovog vlasnika')
-        //         }
-        //         let results: any[] = []
-        //         let processedCount = 0
-        //         // Za svaku vikendicu
-        //         properties.forEach((property, index) => {
-        //             this.processPropertyReservations(property.name, year, (monthlyData) => {
-        //                 results.push({
-        //                     propertyName: property.name,
-        //                     monthlyReservations: monthlyData
-        //                 })
-        //                 processedCount++
-        //                 // Kada su sve obrađene, pošalji rezultat
-        //                 if (processedCount === properties.length) {
-        //                     res.status(200).json(results)
-        //                 }
-        //             })
-        //         })
-        //     }).catch(err => {
-        //         console.log(err)
-        //         res.status(500).json('greska')
-        //     })
-        // }
-        // private processPropertyReservations = (propertyName: string, year: number, callback: (data: number[]) => void) => {
-        //     let startOfYear = new Date(year, 0, 1)
-        //     let endOfYear = new Date(year + 1, 0, 1)
-        //     ReservationModel.find({
-        //         propertyName: propertyName,
-        //         approved: true,
-        //         dateBeg: { $gte: startOfYear, $lt: endOfYear }
-        //     }).then(reservations => {
-        //         // Inicijalizuj niz sa 12 nula
-        //         let monthlyCount = new Array(12).fill(0)
-        //         // Prebroji rezervacije po mesecima
-        //         reservations.forEach(reservation => {
-        //             let month = new Date(reservation.dateBeg).getMonth()
-        //             monthlyCount[month]++
-        //         })
-        //         callback(monthlyCount)
-        //     }).catch(err => {
-        //         console.log('Greška za vikendicu:', propertyName, err)
-        //         // Vrati nule u slučaju greške
-        //         callback(new Array(12).fill(0))
-        //     })
-        // }
     }
 }
 exports.PropertyController = PropertyController;
